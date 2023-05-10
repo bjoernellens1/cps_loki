@@ -20,6 +20,9 @@
   <depend>rclcpp</depend>
   <depend>rclcpp_lifecycle</depend>
 
+  <!-- only for our new device interface package: -->
+  <depend>libserial-dev</depend> 
+
   <exec_depend>ros2_controllers_test_nodes</exec_depend>
   <exec_depend>joint_state_broadcaster</exec_depend>
   <exec_depend>diff_drive_controller</exec_depend>
