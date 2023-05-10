@@ -1,0 +1,195 @@
+[0.000000] (-) TimerEvent: {}
+[0.000228] (ros2_control_demo_example_2) JobQueued: {'identifier': 'ros2_control_demo_example_2', 'dependencies': OrderedDict()}
+[0.000905] (ros2_control_demo_example_2) JobStarted: {'identifier': 'ros2_control_demo_example_2'}
+[0.032386] (ros2_control_demo_example_2) JobProgress: {'identifier': 'ros2_control_demo_example_2', 'progress': 'cmake'}
+[0.032651] (ros2_control_demo_example_2) Command: {'cmd': ['/home/bjorn/.local/bin/cmake', '/home/bjorn/Documents/ros-projects/control_ws/src/example_2', '-DCMAKE_INSTALL_PREFIX=/home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2'], 'cwd': '/home/bjorn/Documents/ros-projects/control_ws/build/ros2_control_demo_example_2', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'bjorn'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/bjorn'), ('OLDPWD', '/home/bjorn/Documents/ros-projects/control_ws/src'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1940'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1003/bus,guid=28d56257dbbe39af1d502e52645b3973'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'bjorn'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'bjorn'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/bjorn/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/NUC01:@/tmp/.ICE-unix/1940,unix/NUC01:/tmp/.ICE-unix/1940'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/5ad48778_9dc4_4424_a7d9_8aa58327b0f1'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1003'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1003/.mutter-Xwaylandauth.0VCT41'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.143'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1003/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/bjorn/Documents/ros-projects/control_ws/build/ros2_control_demo_example_2'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1003/bus,guid=28d56257dbbe39af1d502e52645b3973'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/home/bjorn/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.099464] (-) TimerEvent: {}
+[0.199869] (-) TimerEvent: {}
+[0.221794] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.3.0\n'}
+[0.242544] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.300124] (-) TimerEvent: {}
+[0.343623] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.363682] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.364394] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.365403] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.371784] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.400233] (-) TimerEvent: {}
+[0.500622] (-) TimerEvent: {}
+[0.601010] (-) TimerEvent: {}
+[0.681564] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter \n'}
+[0.701121] (-) TimerEvent: {}
+[0.801506] (-) TimerEvent: {}
+[0.871298] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found hardware_interface: 2.24.1 (/opt/ros/humble/share/hardware_interface/cmake)\n'}
+[0.901668] (-) TimerEvent: {}
+[0.972641] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.985680] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.001803] (-) TimerEvent: {}
+[1.012531] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[1.051612] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.102019] (-) TimerEvent: {}
+[1.113522] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.202144] (-) TimerEvent: {}
+[1.302728] (-) TimerEvent: {}
+[1.403314] (-) TimerEvent: {}
+[1.503996] (-) TimerEvent: {}
+[1.604505] (-) TimerEvent: {}
+[1.705286] (-) TimerEvent: {}
+[1.805687] (-) TimerEvent: {}
+[1.906151] (-) TimerEvent: {}
+[2.006539] (-) TimerEvent: {}
+[2.106969] (-) TimerEvent: {}
+[2.207463] (-) TimerEvent: {}
+[2.307889] (-) TimerEvent: {}
+[2.408337] (-) TimerEvent: {}
+[2.508722] (-) TimerEvent: {}
+[2.609153] (-) TimerEvent: {}
+[2.709668] (-) TimerEvent: {}
+[2.755720] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[2.761603] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.2 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[2.809803] (-) TimerEvent: {}
+[2.910176] (-) TimerEvent: {}
+[2.957167] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[3.010338] (-) TimerEvent: {}
+[3.023325] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[3.110455] (-) TimerEvent: {}
+[3.126327] (ros2_control_demo_example_2) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[3.156783] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[3.210580] (-) TimerEvent: {}
+[3.302890] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[3.306159] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[3.311305] (-) TimerEvent: {}
+[3.411930] (-) TimerEvent: {}
+[3.512326] (-) TimerEvent: {}
+[3.612840] (-) TimerEvent: {}
+[3.713284] (-) TimerEvent: {}
+[3.813832] (-) TimerEvent: {}
+[3.836048] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Found ament_cmake_gtest: 1.3.3 (/opt/ros/humble/share/ament_cmake_gtest/cmake)\n'}
+[3.914776] (-) TimerEvent: {}
+[3.991127] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Configuring done (3.9s)\n'}
+[4.014898] (-) TimerEvent: {}
+[4.060355] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[4.068078] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Build files have been written to: /home/bjorn/Documents/ros-projects/control_ws/build/ros2_control_demo_example_2\n'}
+[4.095641] (ros2_control_demo_example_2) CommandEnded: {'returncode': 0}
+[4.096636] (ros2_control_demo_example_2) JobProgress: {'identifier': 'ros2_control_demo_example_2', 'progress': 'build'}
+[4.099054] (ros2_control_demo_example_2) Command: {'cmd': ['/home/bjorn/.local/bin/cmake', '--build', '/home/bjorn/Documents/ros-projects/control_ws/build/ros2_control_demo_example_2', '--', '-j4', '-l4'], 'cwd': '/home/bjorn/Documents/ros-projects/control_ws/build/ros2_control_demo_example_2', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'bjorn'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/bjorn'), ('OLDPWD', '/home/bjorn/Documents/ros-projects/control_ws/src'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1940'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1003/bus,guid=28d56257dbbe39af1d502e52645b3973'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'bjorn'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'bjorn'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/bjorn/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/NUC01:@/tmp/.ICE-unix/1940,unix/NUC01:/tmp/.ICE-unix/1940'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/5ad48778_9dc4_4424_a7d9_8aa58327b0f1'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1003'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1003/.mutter-Xwaylandauth.0VCT41'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.143'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1003/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/bjorn/Documents/ros-projects/control_ws/build/ros2_control_demo_example_2'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1003/bus,guid=28d56257dbbe39af1d502e52645b3973'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/home/bjorn/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[4.115027] (-) TimerEvent: {}
+[4.197074] (ros2_control_demo_example_2) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/ros2_control_demo_example_2.dir/hardware/diffbot_system.cpp.o\x1b[0m\n'}
+[4.215155] (-) TimerEvent: {}
+[4.315856] (-) TimerEvent: {}
+[4.416416] (-) TimerEvent: {}
+[4.516959] (-) TimerEvent: {}
+[4.617486] (-) TimerEvent: {}
+[4.718037] (-) TimerEvent: {}
+[4.818458] (-) TimerEvent: {}
+[4.918872] (-) TimerEvent: {}
+[5.019308] (-) TimerEvent: {}
+[5.119720] (-) TimerEvent: {}
+[5.220893] (-) TimerEvent: {}
+[5.321353] (-) TimerEvent: {}
+[5.421844] (-) TimerEvent: {}
+[5.522471] (-) TimerEvent: {}
+[5.622854] (-) TimerEvent: {}
+[5.723201] (-) TimerEvent: {}
+[5.823553] (-) TimerEvent: {}
+[5.923911] (-) TimerEvent: {}
+[6.024298] (-) TimerEvent: {}
+[6.124712] (-) TimerEvent: {}
+[6.225209] (-) TimerEvent: {}
+[6.325603] (-) TimerEvent: {}
+[6.426758] (-) TimerEvent: {}
+[6.527132] (-) TimerEvent: {}
+[6.627545] (-) TimerEvent: {}
+[6.727904] (-) TimerEvent: {}
+[6.828254] (-) TimerEvent: {}
+[6.928636] (-) TimerEvent: {}
+[7.029070] (-) TimerEvent: {}
+[7.129430] (-) TimerEvent: {}
+[7.229805] (-) TimerEvent: {}
+[7.330161] (-) TimerEvent: {}
+[7.430550] (-) TimerEvent: {}
+[7.530995] (-) TimerEvent: {}
+[7.631387] (-) TimerEvent: {}
+[7.731779] (-) TimerEvent: {}
+[7.832174] (-) TimerEvent: {}
+[7.932538] (-) TimerEvent: {}
+[8.032941] (-) TimerEvent: {}
+[8.133905] (-) TimerEvent: {}
+[8.234412] (-) TimerEvent: {}
+[8.334783] (-) TimerEvent: {}
+[8.435134] (-) TimerEvent: {}
+[8.535489] (-) TimerEvent: {}
+[8.635842] (-) TimerEvent: {}
+[8.736193] (-) TimerEvent: {}
+[8.836567] (-) TimerEvent: {}
+[8.936945] (-) TimerEvent: {}
+[9.037300] (-) TimerEvent: {}
+[9.137670] (-) TimerEvent: {}
+[9.238086] (-) TimerEvent: {}
+[9.338435] (-) TimerEvent: {}
+[9.438858] (-) TimerEvent: {}
+[9.539216] (-) TimerEvent: {}
+[9.639553] (-) TimerEvent: {}
+[9.739919] (-) TimerEvent: {}
+[9.840257] (-) TimerEvent: {}
+[9.940592] (-) TimerEvent: {}
+[10.040940] (-) TimerEvent: {}
+[10.110285] (ros2_control_demo_example_2) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library libros2_control_demo_example_2.so\x1b[0m\n'}
+[10.141100] (-) TimerEvent: {}
+[10.241473] (-) TimerEvent: {}
+[10.341946] (-) TimerEvent: {}
+[10.374956] (ros2_control_demo_example_2) StdoutLine: {'line': b'[100%] Built target ros2_control_demo_example_2\n'}
+[10.385452] (ros2_control_demo_example_2) CommandEnded: {'returncode': 0}
+[10.442066] (-) TimerEvent: {}
+[10.442948] (ros2_control_demo_example_2) JobProgress: {'identifier': 'ros2_control_demo_example_2', 'progress': 'install'}
+[10.496184] (ros2_control_demo_example_2) Command: {'cmd': ['/home/bjorn/.local/bin/cmake', '--install', '/home/bjorn/Documents/ros-projects/control_ws/build/ros2_control_demo_example_2'], 'cwd': '/home/bjorn/Documents/ros-projects/control_ws/build/ros2_control_demo_example_2', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'bjorn'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/bjorn'), ('OLDPWD', '/home/bjorn/Documents/ros-projects/control_ws/src'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1940'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1003/bus,guid=28d56257dbbe39af1d502e52645b3973'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'bjorn'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'bjorn'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/bjorn/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/NUC01:@/tmp/.ICE-unix/1940,unix/NUC01:/tmp/.ICE-unix/1940'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/5ad48778_9dc4_4424_a7d9_8aa58327b0f1'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1003'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1003/.mutter-Xwaylandauth.0VCT41'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.143'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1003/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/bjorn/Documents/ros-projects/control_ws/build/ros2_control_demo_example_2'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1003/bus,guid=28d56257dbbe39af1d502e52645b3973'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/home/bjorn/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[10.542202] (-) TimerEvent: {}
+[10.550224] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[10.550828] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/ros2_control_demo_example_2.xml\n'}
+[10.551221] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/include/ros2_control_demo_example_2\n'}
+[10.551665] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/include/ros2_control_demo_example_2/ros2_control_demo_example_2\n'}
+[10.552000] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/include/ros2_control_demo_example_2/ros2_control_demo_example_2/diffbot_system.hpp\n'}
+[10.552434] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/include/ros2_control_demo_example_2/ros2_control_demo_example_2/visibility_control.h\n'}
+[10.552673] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/launch\n'}
+[10.553204] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/launch/view_robot.launch.py\n'}
+[10.553830] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/ros2_control\n'}
+[10.554082] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/ros2_control/diffbot.ros2_control.xacro\n'}
+[10.554288] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/urdf\n'}
+[10.554539] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/urdf/diffbot.materials.xacro\n'}
+[10.554932] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/urdf/diffbot_description.urdf.xacro\n'}
+[10.555166] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/urdf/diffbot.urdf.xacro\n'}
+[10.555326] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/rviz\n'}
+[10.555581] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/rviz/diffbot.rviz\n'}
+[10.555767] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/rviz/diffbot_view.rviz\n'}
+[10.555908] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Up-to-date: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/launch\n'}
+[10.556054] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/launch/diffbot.launch.py\n'}
+[10.556195] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/config\n'}
+[10.556319] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/config/diffbot_controllers.yaml\n'}
+[10.556470] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/lib/libros2_control_demo_example_2.so\n'}
+[10.557461] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Set runtime path of "/home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/lib/libros2_control_demo_example_2.so" to ""\n'}
+[10.557794] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/environment/library_path.sh\n'}
+[10.558045] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/environment/library_path.dsv\n'}
+[10.558279] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ament_index/resource_index/package_run_dependencies/ros2_control_demo_example_2\n'}
+[10.558498] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ament_index/resource_index/parent_prefix_path/ros2_control_demo_example_2\n'}
+[10.558773] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/environment/ament_prefix_path.sh\n'}
+[10.558985] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/environment/ament_prefix_path.dsv\n'}
+[10.559152] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/environment/path.sh\n'}
+[10.559338] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/environment/path.dsv\n'}
+[10.559513] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/local_setup.bash\n'}
+[10.559719] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/local_setup.sh\n'}
+[10.559927] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/local_setup.zsh\n'}
+[10.560112] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/local_setup.dsv\n'}
+[10.560290] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/package.dsv\n'}
+[10.560585] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ament_index/resource_index/packages/ros2_control_demo_example_2\n'}
+[10.560836] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/ros2_control_demo_example_2\n'}
+[10.561087] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/cmake/export_ros2_control_demo_example_2Export.cmake\n'}
+[10.561329] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/cmake/export_ros2_control_demo_example_2Export-noconfig.cmake\n'}
+[10.561552] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[10.561820] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[10.562045] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/cmake/ros2_control_demo_example_2Config.cmake\n'}
+[10.562224] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/cmake/ros2_control_demo_example_2Config-version.cmake\n'}
+[10.562419] (ros2_control_demo_example_2) StdoutLine: {'line': b'-- Installing: /home/bjorn/Documents/ros-projects/control_ws/install/ros2_control_demo_example_2/share/ros2_control_demo_example_2/package.xml\n'}
+[10.578614] (ros2_control_demo_example_2) CommandEnded: {'returncode': 0}
+[10.642316] (-) TimerEvent: {}
+[10.743610] (-) TimerEvent: {}
+[10.768259] (ros2_control_demo_example_2) JobEnded: {'identifier': 'ros2_control_demo_example_2', 'rc': 0}
+[10.769614] (-) EventReactorShutdown: {}
