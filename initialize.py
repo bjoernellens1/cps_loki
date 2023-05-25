@@ -5,7 +5,7 @@ class GitCloner:
     def __init__(self, directory):
         self.directory = directory
 
-    def clone_repo(self, repo_url, branch='master'):
+    def clone_repo(self, repo_url, branch='main'):
         repo_name = repo_url.split('/')[-1].split('.')[0]
         repo_path = os.path.join(self.directory, repo_name)
 
