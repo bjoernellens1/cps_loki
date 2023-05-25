@@ -7,3 +7,6 @@ nedded repos are:
 - https://github.com/bjoernellens1/ros2_cam_openCV
 
 For initialization, just call "python3 initialize.py"
+
+# Todo: Include bot_mini_bringup
+
