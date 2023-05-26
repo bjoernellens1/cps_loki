@@ -38,7 +38,7 @@ class GitCloner:
         try:
             # Change working directory to the base directory
             main_dir = os.path.join(self.maindir)
-            os.chdir(maindir)
+            os.chdir(main_dir)
 
             # Execute colcon build
             subprocess.check_output(['colcon', 'build'])
