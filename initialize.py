@@ -5,6 +5,7 @@ import yaml
 class GitCloner:
     def __init__(self, directory):
         self.directory = directory
+        self.maindir = os.path.dirname(os.path.abspath(__file__)) # should be equal to the current directory where the script is called from
 
     def clone_or_update_repo(self, repo_url, branch='main'):
         repo_name = repo_url.split('/')[-1].split('.')[0]
@@ -36,7 +37,8 @@ class GitCloner:
         # Build the repository using colcon
         try:
             # Change working directory to the base directory
-            os.chdir('.')
+            main_dir = os.path.join(self.maindir)
+            os.chdir(maindir)
 
             # Execute colcon build
             subprocess.check_output(['colcon', 'build'])
