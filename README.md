@@ -9,5 +9,4 @@ nedded repos are:
 
 For initialization, just call "python3 initialize.py"
 
-# Todo: Include bot_mini_bringup
-
+TODO: extend bot_mini_bringup
