@@ -36,7 +36,7 @@ class GitCloner:
         # Build the repository using colcon
         try:
             # Change working directory to the base directory
-            os.chdir('../')
+            os.chdir('.')
 
             # Execute colcon build
             subprocess.check_output(['colcon', 'build'])
