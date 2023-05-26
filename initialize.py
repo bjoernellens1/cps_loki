@@ -77,6 +77,6 @@ class GitCloner:
 # Usage example
 cloner = GitCloner('./src', 'repos.yaml')
 cloner.clone_or_update_repos()
-cloner.build_repos()
-cloner.source_setup()
+#cloner.build_repos()
+#cloner.source_setup()
 
