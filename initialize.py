@@ -31,6 +31,9 @@ class GitCloner:
 
                 # Pull the latest changes from the repository
                 subprocess.check_output(['git', 'pull'])
+                
+                #Go back one level
+                os.chdir(os.path.join(self.maindir, 'src'))
 
                 print(f"Successfully updated repository '{repo_name}'.")
             except subprocess.CalledProcessError as e:
