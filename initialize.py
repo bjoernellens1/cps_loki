@@ -66,7 +66,8 @@ class GitCloner:
             os.chdir(main_dir)
 
             # Execute "source install/setup.bash" from the parent directory
-            subprocess.check_call(['source', os.path.join('install', 'setup.bash')], shell=True)
+            #subprocess.check_call(['source', os.path.join('install', 'setup.bash')], shell=True)
+            subprocess.check_output(['source', 'install/setup.bash'])
 
             print("Setup file sourced successfully.")
         except subprocess.CalledProcessError as e:
