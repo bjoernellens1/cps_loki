@@ -26,4 +26,5 @@ cloner = GitCloner('./src')
 cloner.clone_repo('https://github.com/bjoernellens1/odrive_ros2_control', 'humble-fw-v0.5.1')
 cloner.clone_repo('https://github.com/bjoernellens1/rmp220_teleop', 'bot_mini')
 cloner.clone_repo('https://github.com/bjoernellens1/ros2_cam_openCV')
+cloner.clone_repo('https://github.com/bjoernellens1/bot_mini_bringup.git')
 
