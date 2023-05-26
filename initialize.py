@@ -20,11 +20,14 @@ class GitCloner:
         except subprocess.CalledProcessError as e:
             print(f"Failed to clone repository '{repo_name}': {e}")
 
-
 # Usage example
 cloner = GitCloner('./src')
-cloner.clone_repo('https://github.com/bjoernellens1/odrive_ros2_control', 'humble-fw-v0.5.1')
-cloner.clone_repo('https://github.com/bjoernellens1/rmp220_teleop', 'bot_mini')
-cloner.clone_repo('https://github.com/bjoernellens1/ros2_cam_openCV')
-cloner.clone_repo('https://github.com/bjoernellens1/bot_mini_bringup.git')
 
+# Load repository URLs from file
+with open('repos.txt', 'r') as file:
+    repos = file.readlines()
+
+# Clone repositories
+for repo_url in repos:
+    repo_url = repo_url.strip()  # Remove newline characters
+    cloner.clone_repo(repo_url)
