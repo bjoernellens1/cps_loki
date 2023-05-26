@@ -1,5 +1,6 @@
 import os
 import subprocess
+import yaml
 
 class GitCloner:
     def __init__(self, directory):
@@ -16,18 +17,20 @@ class GitCloner:
         command = ['git', 'clone', '--branch', branch, repo_url, repo_path]
         try:
             subprocess.check_output(command)
-            print(f"Successfully cloned repository '{repo_name}'.")
+            print(f"Successfully cloned repository '{repo_name}' on branch '{branch}'.")
         except subprocess.CalledProcessError as e:
-            print(f"Failed to clone repository '{repo_name}': {e}")
+            print(f"Failed to clone repository '{repo_name}' on branch '{branch}': {e}")
+
 
 # Usage example
 cloner = GitCloner('./src')
 
-# Load repository URLs from file
-with open('repos.txt', 'r') as file:
-    repos = file.readlines()
+# Load repository URLs from YAML file
+with open('repos.yaml', 'r') as file:
+    repos_data = yaml.safe_load(file)
 
 # Clone repositories
-for repo_url in repos:
-    repo_url = repo_url.strip()  # Remove newline characters
-    cloner.clone_repo(repo_url)
+for repo_data in repos_data['repositories']:
+    repo_url = repo_data['url']
+    branch = repo_data.get('branch', 'main')
+    cloner.clone_repo(repo_url, branch)
