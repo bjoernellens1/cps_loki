@@ -3,9 +3,21 @@ import subprocess
 import yaml
 
 class GitCloner:
-    def __init__(self, directory):
+    def __init__(self, directory, repos_file):
         self.directory = directory
         self.maindir = os.path.dirname(os.path.abspath(__file__)) # should be equal to the current directory where the script is called from
+        self.repos_file = repos_file
+
+    def clone_or_update_repos(self):
+        # Load repository URLs from YAML file
+        with open(self.repos_file, 'r') as file:
+            repos_data = yaml.safe_load(file)
+
+        # Clone or update repositories
+        for repo_data in repos_data['repositories']:
+            repo_url = repo_data['url']
+            branch = repo_data.get('branch', 'main')
+            self.clone_or_update_repo(repo_url, branch)
 
     def clone_or_update_repo(self, repo_url, branch='main'):
         repo_name = repo_url.split('/')[-1].split('.')[0]
@@ -34,7 +46,7 @@ class GitCloner:
                 print(f"Failed to clone repository '{repo_name}' on branch '{branch}': {e}")
                 return
 
-        # Build the repository using colcon
+    def build_repos(self):
         try:
             # Change working directory to the base directory
             main_dir = os.path.join(self.maindir)
@@ -44,24 +56,26 @@ class GitCloner:
             subprocess.check_output(['colcon', 'build'])
 
             print("Build completed successfully.")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to build repositories: {e}")
 
-            # Execute "source install/setup.bash"
-            subprocess.check_call(['source', 'install/setup.bash'], shell=True)
+    def source_setup(self):
+        try:
+            # Change working directory to the base directory
+            main_dir = os.path.join(self.maindir)
+            os.chdir(main_dir)
+
+            # Execute "source install/setup.bash" from the parent directory
+            subprocess.check_call(['source', os.path.join(self.directory, 'install', 'setup.bash')], shell=True)
 
             print("Setup file sourced successfully.")
         except subprocess.CalledProcessError as e:
-            print(f"Failed to build or source setup file: {e}")
+            print(f"Failed to source setup file: {e}")
 
 
 # Usage example
-cloner = GitCloner('./src')
+cloner = GitCloner('./src', 'repos.yaml')
+cloner.clone_or_update_repos()
+cloner.build_repos()
+cloner.source_setup()
 
-# Load repository URLs from YAML file
-with open('repos.yaml', 'r') as file:
-    repos_data = yaml.safe_load(file)
-
-# Clone or update repositories and perform build and setup
-for repo_data in repos_data['repositories']:
-    repo_url = repo_data['url']
-    branch = repo_data.get('branch', 'main')
-    cloner.clone_or_update_repo(repo_url, branch)
