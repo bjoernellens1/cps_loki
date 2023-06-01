@@ -7,3 +7,4 @@ repositories:
   - url: https://github.com/bjoernellens1/bot_mini_bringup
   - url: https://github.com/bjoernellens1/Lslidar_ROS2_driver
     branch: N10_V1.0
+  - url: https://github.com/bjoernellens1/bot_mini_description
