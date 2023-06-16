@@ -35,7 +35,8 @@ launch_commands = [
     "robot_controller.launch.py",
     "robot_joy_teleop.launch.py",
     "robot_twist_mux.launch.py",
-    "robot_lidar.launch.py"
+    "robot_lidar.launch.py",
+    "robot_cam.launch.py"
 ]
 
 # Create the commands by joining the base command with each launch command
