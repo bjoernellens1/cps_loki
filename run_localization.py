@@ -31,15 +31,15 @@ base_command = "ros2 launch bot_mini_bringup"
 
 # Define the commands to launch
 launch_commands = [
-    #"rsp.launch.py",
+    "rsp.launch.py",
     "robot_controller.launch.py",
     "robot_joy_teleop.launch.py",
     "robot_twist_mux.launch.py",
     "robot_lidar.launch.py"
 ]
 
-# Add the base directory to the commands
-commands = [os.path.join(base_command, command) for command in launch_commands]
+# Create the commands by joining the base command with each launch command
+commands = [f"{base_command} {command}" for command in launch_commands]
 
 # Add the path to the map file
 map_file = os.path.join(current_directory, "src", "bot_mini_bringup", "maps", "default_save_map.yaml")
