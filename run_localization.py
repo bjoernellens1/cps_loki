@@ -31,7 +31,7 @@ base_command = "ros2 launch bot_mini_bringup"
 
 # Define the commands to launch
 launch_commands = [
-    "rsp.launch.py",
+    #"rsp.launch.py",
     "robot_controller.launch.py",
     "robot_joy_teleop.launch.py",
     "robot_twist_mux.launch.py",
