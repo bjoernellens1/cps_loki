@@ -12,6 +12,8 @@ For initialization, just call "python3 initialize.py"
 TODO: extend bot_mini_bringup, python scripts for simplyfiyng startup process.
 
 ## Useful commands:
+rosdep install --from-paths src --ignore-src -r -y
+
 
 ### Localization using predefined map and navigation
 don't forget to set transient_local in rviz to see the map
