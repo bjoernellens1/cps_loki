@@ -27,11 +27,12 @@ def handle_interrupt(signal, frame):
 
 # Add your commands here
 commands = [
-    "ros2 launch bot_mini_bringup rsp.launch.py",
-    "ros2 launch bot_mini_bringup controller.launch.py",
-    "ros2 launch bot_mini_bringup joy_teleop.launch.py",
-    "ros2 launch bot_mini_bringup lidar.launch.py",
-    "ros2 launch bot_mini_bringup mapper.launch.py"
+    #"ros2 launch bot_mini_bringup rsp.launch.py",
+    "ros2 launch bot_mini_bringup robot_controller.launch.py",
+    "ros2 launch bot_mini_bringup robot_joy_teleop.launch.py",
+    "ros2 launch bot_mini_bringup robot_twist_mux.launch.py",
+    "ros2 launch bot_mini_bringup robot_lidar.launch.py",
+    "ros2 launch bot_mini_bringup robot_mapper.launch.py"
 ]
 
 # Register the signal handler
