@@ -42,7 +42,7 @@ launch_commands = [
 commands = [f"{base_command} {command}" for command in launch_commands]
 
 # Add the path to the map file
-map_file = os.path.join(current_directory, "src", "bot_mini_bringup", "maps", "default_save_map.yaml")
+map_file = os.path.join(current_directory, "src", "bot_mini_bringup", "maps", "default_map_save.yaml")
 map_command = f"ros2 launch nav2_bringup localization_launch.py map:={map_file}"
 commands.append(map_command)
 
