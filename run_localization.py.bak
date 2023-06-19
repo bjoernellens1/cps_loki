@@ -2,7 +2,6 @@ import subprocess
 import signal
 import os
 import time
-import threading
 
 processes = []
 current_directory = os.getcwd()
@@ -36,14 +35,15 @@ launch_commands = [
     "robot_controller.launch.py",
     "robot_joy_teleop.launch.py",
     "robot_twist_mux.launch.py",
-    "robot_lidar.launch.py"
+    "robot_lidar.launch.py",
+    #"robot_cam.launch.py"
 ]
 
 # Create the commands by joining the base command with each launch command
 commands = [f"{base_command} {command}" for command in launch_commands]
 
 # Add the path to the map file
-map_file = os.path.join(current_directory, "src", "bot_mini_bringup", "maps", "default_save_map.yaml")
+map_file = os.path.join(current_directory, "src", "bot_mini_bringup", "maps", "default_map_save.yaml")
 map_command = f"ros2 launch nav2_bringup localization_launch.py map:={map_file}"
 commands.append(map_command)
 
@@ -53,19 +53,12 @@ signal.signal(signal.SIGINT, handle_interrupt)
 # Source the setup files
 source_setup_files()
 
-# Create and start threads for each command
-threads = []
+# Start the processes
 for command in commands:
-    thread = threading.Thread(target=start_process, args=(command,))
-    thread.start()
-    threads.append(thread)
+    start_process(command)
 
 # Wait for user input to stop the processes
 input("Press Enter to stop all processes...")
 
 # Stop all processes
 stop_processes()
-
-# Wait for all threads to complete
-for thread in threads:
-    thread.join()
