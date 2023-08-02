@@ -62,12 +62,6 @@ RUN source /${UNDERLAY_WS}/install/setup.bash \
 COPY ./docker/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
-COPY ./controller_startup.sh /
-RUN chmod +x /controller_startup.sh
-
-COPY ./localization_startup.sh /
-RUN chmod +x /localization_startup.sh
-
 ENTRYPOINT [ "/entrypoint.sh" ]
 
 ###########################################
