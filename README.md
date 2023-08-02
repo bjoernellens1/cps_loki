@@ -1,4 +1,22 @@
 # cps_bot_mini_ws
+
+Now working via Docker!
+Follow the instructions: To use this you need the latest Docker installed and for the multiplatform build the binfmt dependencies for your system. Otherwise just use the pre-built Docker containers. I will try to make the images available public.
+
+Run:
+For instance on your PC:
+    docker compose run guis
+This will launch the "guis" container where you will find a full ros2 humble installation and all the dependencies this robot needs.
+
+On the robot:
+    docker compose up -d controller teleop
+
+
+### Attention: do not launch docker compose without arguments else you will start all services at once and you won't need them.
+
+
+Old-fashioned way:
+
 temporary ws for developing ros2 control on robot mini with odrive
 
 needed repos are:
