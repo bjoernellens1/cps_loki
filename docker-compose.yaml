@@ -1,0 +1,175 @@
+version: "3.9"
+
+services:
+  # Base image containing dependencies.
+  base:
+    image: ghcr.io/bjoernellens1/ros2-base:humble
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      tags:
+        - ghcr.io/bjoernellens1/ros2-base:humble
+      args:
+        ROS_DISTRO: humble
+      target: base
+      x-bake:
+        platforms:
+          - linux/arm64
+          - linux/amd64
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+    # Needed to display graphical applications
+    privileged: true
+    environment:
+      # Allows graphical programs in the container.
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+      # Allows graphical programs in the container.
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${XAUTHORITY:-$HOME/.Xauthority}:/root/.Xauthority
+
+  # Overlay image containing the project specific source code.
+  overlay:
+    extends: base
+    image: ghcr.io/bjoernellens1/cps_bot_mini_ws/bot:overlay
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      tags:
+        - ghcr.io/bjoernellens1/cps_bot_mini_ws/bot:overlay
+      target: overlay
+      x-bake:
+        platforms:
+          - linux/arm64
+          - linux/amd64
+    volumes:
+      - .:/repo
+
+  # Additional dependencies for GUI applications
+  guis:
+    extends: overlay
+    image: ghcr.io/bjoernellens1/cps_bot_mini_ws/bot:guis
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      tags:
+        - ghcr.io/bjoernellens1/cps_bot_mini_ws/bot:guis
+      target: guis
+      x-bake:
+        platforms:
+          - linux/arm64
+          - linux/amd64
+    command: >
+      /bin/bash
+
+  # Robot State Publisher
+  robot_state_publisher:
+    extends: overlay
+    command: >
+      ros2 launch bot_mini_bringup rsp.launch.py
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+
+  # Controller
+  controller:
+    extends: overlay 
+    command: >
+      ros2 launch bot_mini_bringup robot_controller.launch.py
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyACM0:/dev/ttyACM0
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+    # Needed to display graphical applications
+    privileged: true
+
+  # teleop
+  teleop:
+    extends: overlay 
+    command: >
+      ros2 launch bot_mini_bringup robot_joy_teleop.launch.py
+    devices:
+      - /dev/input/js0:/dev/input/js0
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+    # Needed to display graphical applications
+    privileged: true
+
+  # lidar
+  lidar:
+    extends: overlay
+    command: >
+      ros2 launch cbot_mini_bringup robot_lidar.launch.py
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyUSB1:/dev/ttyUSB1
+      - /dev/ttyACM0:/dev/ttyACM0
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+
+  # mapping
+  mapping:
+    extends: overlay
+    command: >
+      ros2 launch bot_mini_bringup robot_mapper.launch.py
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+
+  # navigation
+  navigation:
+    extends: overlay
+    command: >
+      ros2 launch cbot_mini_bringup robot_navigation.launch.py
+      map_subscribe_transient_local:=true
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+
+  # rviz2
+  rviz2:
+    extends: guis
+    command: >
+      rviz2
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+    # Needed to display graphical applications
+    privileged: true
+    environment:
+      # Allows graphical programs in the container.
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+      # Allows graphical programs in the container.
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${XAUTHORITY:-$HOME/.Xauthority}:/root/.Xauthority

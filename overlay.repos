@@ -1,0 +1,33 @@
+repositories:  
+  
+    cps_rmp220_support:
+        type: git
+        url: https://github.com/bjoernellens1/cps_rmp220_support.git
+        version: main
+
+    rmp220_teleop:
+        type: git
+        url: https://github.com/bjoernellens1/rmp220_teleop.git
+        version: main
+
+    cam_openCV:
+        type: git
+        url: https://github.com/bjoernellens1/ros2_cam_openCV.git
+        version: main
+
+    bot_mini_teleop:
+        type: git
+        url: https://github.com/bjoernellens1/rmp220_teleop
+        version: bot_mini
+
+    bot_mini_description:
+        type: git
+        url: https://github.com/bjoernellens1/bot_mini_description
+
+    cam_openCV:
+        type: git
+        url: https://github.com/bjoernellens1/ros2_cam_openCV
+
+    bot_mini_bringup:
+        type: git
+        url: https://github.com/bjoernellens1/bot_mini_bringup 
