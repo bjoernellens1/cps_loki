@@ -86,4 +86,4 @@ RUN source /${UNDERLAY_WS}/install/setup.bash \
 # Set up the entrypoint
 ENTRYPOINT [ "/entrypoint.sh" ]
 
-LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/ros2_rmp
+LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/cps_bot_mini_ws
