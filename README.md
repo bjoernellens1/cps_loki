@@ -1,7 +1,13 @@
 # cps_bot_mini_ws
 
-Now working via Docker!
+## Now working via Docker!
 Follow the instructions: To use this you need the latest Docker installed and for the multiplatform build the binfmt dependencies for your system. Otherwise just use the pre-built Docker containers. I will try to make the images available public.
+
+First let's check if you are able to pull the pre-built images:
+```
+    docker pull ghcr.io/bjoernellens1/bot_mini_ws/bot:overlay
+    docker pull ghcr.io/bjoernellens1/bot_mini_ws/bot:guis
+```
 
 Run:
 For instance on your PC:
@@ -22,8 +28,15 @@ For the fact all can run inside Docker makes the project super portable so every
 
 ### Attention: do not launch docker compose without arguments else you will start all services at once and you won't need them.
 
+For building your own images:
+I would advise to fork the repository and start working in your own one.
+```
+    docker buildx bake overlay --load
+```
+This will allow you to modify the images to your needs. Enjoy!
 
-Old-fashioned way:
+
+## Old-fashioned way:
 
 temporary ws for developing ros2 control on robot mini with odrive
 
