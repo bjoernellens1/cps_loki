@@ -1,0 +1,191 @@
+version: "3.9"
+
+services:
+  # Base image containing dependencies.
+  base:
+    image: ghcr.io/bjoernellens1/ros2_rmp/rmp:base
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        ROS_DISTRO: humble
+      target: base
+      x-bake:
+        platforms:
+          - linux/arm64
+          - linux/amd64
+
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+    # Needed to display graphical applications
+    privileged: true
+    environment:
+      # Allows graphical programs in the container.
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+      # Allows graphical programs in the container.
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${XAUTHORITY:-$HOME/.Xauthority}:/root/.Xauthority
+
+  # Overlay image containing the project specific source code.
+  overlay:
+    extends: base
+    image: ghcr.io/bjoernellens1/ros2_rmp/rmp:overlay
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      tags:
+        - ghcr.io/bjoernellens1/ros2_rmp/rmp:overlay
+      target: overlay
+      x-bake:
+        platforms:
+          - linux/arm64
+          - linux/amd64
+    volumes:
+      - .:/repo
+
+  # Additional dependencies for GUI applications
+  guis:
+    extends: overlay
+    image: ghcr.io/bjoernellens1/ros2_rmp/rmp:guis
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      tags:
+        - ghcr.io/bjoernellens1/ros2_rmp/rmp:guis
+      target: guis
+      x-bake:
+        platforms:
+          - linux/arm64
+          - linux/amd64
+    #entrypoint: /bin/bash
+    command: >
+      /bin/bash
+
+  # Robot State Publisher
+  robot_state_publisher:
+    extends: overlay
+    command: >
+      ros2 launch cps_rmp220_support rsp.launch.py --ros-args -r __ns:=/probeNamespace 
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+
+  # Controller
+  controller:
+    extends: overlay 
+    command: >
+      ros2 launch cps_rmp220_support robot_controller.launch.py __ns:=/probeNamespace 
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/input/js0:/dev/input/js0
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+    # Needed to display graphical applications
+    privileged: true
+    # depends_on:
+    #   - robot_state_publisher
+
+  # teleop
+  teleop:
+    extends: overlay 
+    command: >
+      ros2 launch cps_rmp220_support robot_joystick.launch.py 
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/input/js0:/dev/input/js0
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+    # Needed to display graphical applications
+    privileged: true
+
+  # lidar
+  lidar:
+    extends: overlay
+    command: >
+      ros2 launch cps_rmp220_support robot_lidar.launch.py
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+    depends_on:
+      - robot_state_publisher
+
+  # mapping
+  mapping:
+    extends: overlay
+    command: >
+      ros2 launch cps_rmp220_support robot_mapping.launch.py
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+
+  # navigation
+  navigation:
+    extends: overlay
+    command: >
+      ros2 launch cps_rmp220_support robot_navigation.launch.py
+      map_subscribe_transient_local:=true
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+  
+  # bash
+  bash:
+    extends: overlay
+    command: >
+      /bin/bash
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+
+  # rviz2
+  rviz2:
+    extends: guis
+    # command: >
+    #   ros2 launch cps_rmp220_support robot_rviz2.launch.py
+    command: >
+      rviz2
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+    # Needed to display graphical applications
+    privileged: true
+    environment:
+      # Allows graphical programs in the container.
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+      # Allows graphical programs in the container.
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${XAUTHORITY:-$HOME/.Xauthority}:/root/.Xauthority
