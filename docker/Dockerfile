@@ -1,8 +1,11 @@
 ARG ROS_DISTRO=humble
-ARG UNDERLAY_WS=/bot_mini_ws
-ARG OVERLAY_WS=/overlay_ws
+ARG UNDERLAY_WS=bot_mini_ws
+ARG OVERLAY_WS=overlay_ws
 
 # This file should work for both amd64 and arm64 builds.
+
+## Problem! some variables not working currently. Need to find out why.
+# For now, the variables are replaced with fixed values.
 
 ########################################
 # Base Image for Bot Mini Control #
@@ -15,16 +18,18 @@ ENV ROS_DISTRO=${ROS_DISTRO}
 ENV UNDERLAY_WS=${UNDERLAY_WS}
 ENV OVERLAY_WS=${OVERLAY_WS}
 
+RUN echo "successfully sourced ENV variables: ROS_DISTRO=${ROS_DISTRO}, UNDERLAY_WS=${UNDERLAY_WS}, OVERLAY_WS=${OVERLAY_WS}"
+
 # Create Colcon workspace with external dependencies
-RUN mkdir -p /${UNDERLAY_WS}/src
-WORKDIR /${UNDERLAY_WS}/src
+RUN mkdir -p /bot_mini_ws/src
+WORKDIR /bot_mini_ws/src
 COPY dependencies.repos .
 
 #RUN vcs import < dependencies.repos
 RUN vcs import < dependencies.repos;
 
 # Build the base Colcon workspace, installing dependencies first.
-WORKDIR /${UNDERLAY_WS}
+WORKDIR /bot_mini_ws
 RUN source /opt/ros/${ROS_DISTRO}/setup.bash \
  && apt-get update -y \
  && rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y \
@@ -45,14 +50,14 @@ ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 FROM base AS overlay
  
 # Create an overlay Colcon workspace
-RUN mkdir -p /${OVERLAY_WS}/src
-WORKDIR /${OVERLAY_WS}/src
+RUN mkdir -p /overlay_ws/src
+WORKDIR /overlay_ws/src
 COPY overlay.repos .
 RUN vcs import < overlay.repos
 
-WORKDIR /${OVERLAY_WS}
+WORKDIR /overlay_ws
 
-RUN source /${UNDERLAY_WS}/install/setup.bash \
+RUN source /bot_mini_ws/install/setup.bash \
  && colcon build --symlink-install \
  && apt-get update \
  && rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y \
@@ -70,7 +75,7 @@ ENTRYPOINT [ "/entrypoint.sh" ]
 FROM overlay AS guis
 
 # Install additional GUI tools
-RUN source /${UNDERLAY_WS}/install/setup.bash \
+RUN source /bot_mini_ws/install/setup.bash \
  && colcon build --symlink-install \
  && apt-get update \
  && apt-get install -y --no-install-recommends ros-${ROS_DISTRO}-rviz2 \

@@ -11,6 +11,8 @@ services:
         - ghcr.io/bjoernellens1/ros2-base:humble
       args:
         ROS_DISTRO: humble
+        UNDERLAY_WS: cps_bot_mini_ws
+        OVERLAY_WS: overlay_ws
       target: base
       x-bake:
         platforms:

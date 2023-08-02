@@ -8,17 +8,12 @@ repositories:
     rmp220_teleop:
         type: git
         url: https://github.com/bjoernellens1/rmp220_teleop.git
-        version: main
+        version: bot_mini
 
     cam_openCV:
         type: git
         url: https://github.com/bjoernellens1/ros2_cam_openCV.git
         version: main
-
-    bot_mini_teleop:
-        type: git
-        url: https://github.com/bjoernellens1/rmp220_teleop
-        version: bot_mini
 
     bot_mini_description:
         type: git
@@ -30,4 +25,5 @@ repositories:
 
     bot_mini_bringup:
         type: git
-        url: https://github.com/bjoernellens1/bot_mini_bringup 
+        url: https://github.com/bjoernellens1/bot_mini_bringup
+        version: imu
