@@ -1,6 +1,6 @@
 ARG ROS_DISTRO=humble
 ARG UNDERLAY_WS=/bot_mini_ws
-ARG OVERLAY_WS=/bot_mini_ws
+ARG OVERLAY_WS=/overlay_ws
 
 # This file should work for both amd64 and arm64 builds.
 
@@ -8,10 +8,12 @@ ARG OVERLAY_WS=/bot_mini_ws
 # Base Image for Bot Mini Control #
 ########################################
 FROM ros:${ROS_DISTRO} as base
-ENV ROS_DISTRO=${ROS_DISTRO}
-ENV UNDERLAY_WS=${UNDERLAY_WS}
 
 SHELL ["/bin/bash", "-c"]
+
+ENV ROS_DISTRO=${ROS_DISTRO}
+ENV UNDERLAY_WS=${UNDERLAY_WS}
+ENV OVERLAY_WS=${OVERLAY_WS}
 
 # Create Colcon workspace with external dependencies
 RUN mkdir -p /${UNDERLAY_WS}/src
@@ -41,8 +43,6 @@ ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 # Overlay Image for Bot Mini Control #
 ###########################################
 FROM base AS overlay
-
-ENV OVERLAY_WS=${OVERLAY_WS}
  
 # Create an overlay Colcon workspace
 RUN mkdir -p /${OVERLAY_WS}/src
