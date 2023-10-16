@@ -97,6 +97,7 @@ services:
     ipc: host
     # Needed to display graphical applications
     privileged: true
+    restart: unless-stopped
 
   # teleop
   teleop:
@@ -113,6 +114,7 @@ services:
     ipc: host
     # Needed to display graphical applications
     privileged: true
+    restart: unless-stopped
 
   # lidar
   lidar:
