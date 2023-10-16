@@ -26,4 +26,4 @@ repositories:
     bot_mini_bringup:
         type: git
         url: https://github.com/bjoernellens1/bot_mini_bringup
-        version: imu
+        version: main
