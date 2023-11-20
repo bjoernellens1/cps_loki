@@ -85,4 +85,4 @@ RUN source /bot_mini_ws/install/setup.bash \
 # Set up the entrypoint
 ENTRYPOINT [ "/entrypoint.sh" ]
 
-LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/cps_bot_mini_ws
+LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/cps_loki
