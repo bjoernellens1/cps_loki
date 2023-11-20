@@ -119,6 +119,10 @@ services:
     #  map_subscribe_transient_local:=true
     command: >
       ros2 launch nav2_bringup bringup_launch.py slam:=True map:=/repo/map.yaml use_sim_time:=False use_composition:=True params_file:=/overlay_ws/src/cps_loki_bringup/config/nav2_params.yaml
+    depends_on:
+      - lidar
+      - controller
+      - teleop
 
   # rviz2
   rviz2:
