@@ -1,4 +1,6 @@
-# cps_loki Workspace
+# cps_loki Workspace - mesh VPN branch
+
+This branch is for integrating Tailscale VPN into ROS2 on CPS Loki Robot.
 
 ## Now working via Docker!
 Follow the instructions: To use this you need the latest Docker installed and for the multiplatform build the binfmt dependencies for your system. Otherwise just use the pre-built Docker containers. I will try to make the images available public.
