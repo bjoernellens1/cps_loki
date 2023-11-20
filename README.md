@@ -3,6 +3,7 @@
 ## Now working via Docker!
 Follow the instructions: To use this you need the latest Docker installed and for the multiplatform build the binfmt dependencies for your system. Otherwise just use the pre-built Docker containers. I will try to make the images available public.
 
+TODO: rename packages!
 First let's check if you are able to pull the pre-built images:
 ```
     docker pull ghcr.io/bjoernellens1/bot_mini_ws/bot:overlay
