@@ -131,3 +131,10 @@ services:
       rviz2
     # Needed to display graphical applications
     privileged: true
+
+  #####################################################################################################
+  # Follwowing section adds mesh vpn configuration for the whole system via tailscale docker container#
+  #####################################################################################################
+
+  # tailscale
+  
