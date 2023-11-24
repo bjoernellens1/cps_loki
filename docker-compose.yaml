@@ -107,6 +107,8 @@ services:
   # lidar
   lidar:
     extends: overlay
+    depends_on:
+      - lidar_filter
     command: >
       ros2 launch cps_loki_bringup robot_lidar.launch.py
     devices:
