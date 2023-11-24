@@ -96,7 +96,14 @@ services:
     devices:
       - /dev/input:/dev/input
     restart: unless-stopped
+  
 
+  # scan filter node
+  lidar_filter:
+    extends: overlay
+    command: >
+      ros2 launch cps_loki_bringup robot_scan_filter.launch.py
+    
   # lidar
   lidar:
     extends: overlay
