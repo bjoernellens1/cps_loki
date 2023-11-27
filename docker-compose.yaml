@@ -140,8 +140,9 @@ services:
     extends: overlay
     command: >
       bash
-    devices:
-      - /dev/:/dev/
+    privileged: true
+    #devices:
+    #  - /dev/:/dev/
 
   ################################################################################################################################
   # This section is mostly for supervision from PC                                                                               #
