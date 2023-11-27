@@ -25,7 +25,7 @@ services:
     network_mode: host
     ipc: host
     # Needed to display graphical applications
-    privileged: true
+    #privileged: true
     environment:
       # Allows graphical programs in the container.
       - DISPLAY=${DISPLAY}
@@ -140,6 +140,8 @@ services:
     extends: overlay
     command: >
       bash
+    devices:
+      - /dev/video0:/dev/video0
 
   ################################################################################################################################
   # This section is mostly for supervision from PC                                                                               #
