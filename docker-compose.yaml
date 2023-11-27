@@ -139,7 +139,7 @@ services:
   cam:
     extends: overlay
     command: >
-      bash
+      ros2 launch ffmpeg_image_transport cam.launch.py
     privileged: true
     #devices:
     #  - /dev/:/dev/
