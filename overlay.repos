@@ -5,6 +5,11 @@ repositories:
         url: https://github.com/bjoernellens1/ros2_cam_openCV.git
         version: main
 
+    cam_ffmpeg:
+        type: git
+        url: https://github.com/ros-misc-utilities/ffmpeg_image_transport
+        version: master
+
     cps_loki_description:
         type: git
         url: https://github.com/bjoernellens1/cps_loki_description
