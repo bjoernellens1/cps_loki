@@ -141,8 +141,8 @@ services:
     command: >
       ros2 launch ffmpeg_image_transport cam.launch.py
     privileged: true
-    #devices:
-    #  - /dev/:/dev/
+    devices:
+      - /dev/dri:/dev/dri
 
   ################################################################################################################################
   # This section is mostly for supervision from PC                                                                               #
