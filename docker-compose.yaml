@@ -141,7 +141,7 @@ services:
     command: >
       bash
     devices:
-      - /dev/video0:/dev/video0
+      - /dev/video*:/dev/video*
 
   ################################################################################################################################
   # This section is mostly for supervision from PC                                                                               #
