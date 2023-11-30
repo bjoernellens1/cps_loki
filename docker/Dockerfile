@@ -121,16 +121,10 @@ LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/cps_loki
 
 # ENTRYPOINT [ "/usr/bin/OliveTin" ]
 
-FROM jamesread/olivetin AS olivetin
+FROM apline AS olivetin
 
-USER root
 
-RUN curl https://download.docker.com/linux/fedora/36/x86_64/stable/Packages/docker-compose-plugin-2.18.1-1.fc36.x86_64.rpm --output docker-compose-plugin.rpm
 
-RUN microdnf -y install dnf \
-    && dnf install -y ./docker-compose-plugin.rpm \
-    && dnf clean all
+RUN wget https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.apk
+RUN apk add --allow-untrusted OliveTin_linux_amd64.apk
 
-USER olivetin
-
-ENTRYPOINT [ "/usr/bin/OliveTin" ]
