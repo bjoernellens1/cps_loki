@@ -132,3 +132,5 @@ RUN microdnf -y install dnf \
     && dnf clean all
 
 USER olivetin
+
+ENTRYPOINT [ "/usr/bin/OliveTin" ]
