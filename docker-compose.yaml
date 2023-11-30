@@ -136,6 +136,7 @@ services:
   config:
     container_name: olivetin
     image: jamesread/olivetin
+    user: root
     volumes:
       - ./config/olivetin.yaml:/config/config.yaml # replace host path or volume as needed
       - /var/run/docker.sock:/var/run/docker.sock
