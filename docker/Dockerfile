@@ -58,9 +58,9 @@ RUN vcs import < overlay.repos
 WORKDIR /overlay_ws
 
 RUN source /bot_mini_ws/install/setup.bash \
- && colcon build --symlink-install \
  && apt-get update \
  && apt-get install -y ros-humble-image-transport \
+ && colcon build --symlink-install \
  && rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y \
  && rm -rf /var/lib/apt/lists/*
 
