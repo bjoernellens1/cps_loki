@@ -121,7 +121,7 @@ LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/cps_loki
 
 # ENTRYPOINT [ "/usr/bin/OliveTin" ]
 
-FROM apline AS olivetin
+FROM alpine AS olivetin
 
 
 
