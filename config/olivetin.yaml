@@ -1,0 +1,11 @@
+actions:
+  - title: "Start Navigation Stack"
+    shell: docker compose -f /home/bjorn/git/cps_loki/docker-compose.yaml up -d navigation
+  - title: "Stop Navigation Stack"
+    shell: docker compose -f /home/bjorn/git/cps_loki/docker-compose.yaml down navigation
+  - title: "Start Mapping"
+    shell: docker compose -f /home/bjorn/git/cps_loki/docker-compose.yaml up -d mapping
+  - title: "Stop Mapping"
+    shell: docker compose -f /home/bjorn/git/cps_loki/docker-compose.yaml down mapping
+  - title: "Restart Teleop"
+    shell: docker compose -f /home/bjorn/git/cps_loki/docker-compose.yaml restart teleop
