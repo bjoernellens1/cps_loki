@@ -138,6 +138,7 @@ services:
     image: jamesread/olivetin
     volumes:
       - ./config/olivetin.yaml:/config # replace host path or volume as needed
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "88:1337"
     restart: unless-stopped
