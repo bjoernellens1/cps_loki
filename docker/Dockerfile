@@ -92,7 +92,7 @@ LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/cps_loki
 #############################################
 FROM registry.fedoraproject.org/fedora-minimal:39 AS olivetin
 
-LABEL org.opencontainers.image.source https://github.com/OliveTin/OliveTin
+LABEL org.opencontainers.image.source https://ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
 LABEL org.opencontainers.image.title=OliveTin
 
 # Making sure there is newest docker version installed
