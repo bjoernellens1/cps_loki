@@ -149,6 +149,7 @@ services:
     user: root
     volumes:
       - ./config/olivetin.yaml:/config/config.yaml # replace host path or volume as needed
+      - .:/repo
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "88:1337"
