@@ -59,7 +59,7 @@ WORKDIR /overlay_ws
 
 RUN source /bot_mini_ws/install/setup.bash \
  && apt-get update \
- && apt-get install -y ros-humble-image-transport \
+ && apt-get install -y ros-${ROS_DISTRO}-image-transport ros-${ROS_DISTRO}-cv-bridge \
  && colcon build --symlink-install \
  && rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y \
  && rm -rf /var/lib/apt/lists/*
