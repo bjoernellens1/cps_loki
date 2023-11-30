@@ -146,7 +146,8 @@ services:
         platforms:
           #- linux/arm64
           - linux/amd64
-    user: root
+    #user: root
+    privileged: true
     volumes:
       - ./config/olivetin.yaml:/config/config.yaml # replace host path or volume as needed
       - .:/repo
