@@ -54,6 +54,7 @@ RUN mkdir -p /overlay_ws/src
 WORKDIR /overlay_ws/src
 COPY overlay.repos .
 RUN vcs import < overlay.repos
+RUN vcs import ffmpeg_image_transport/ffmpeg_image_transport.repos
 
 WORKDIR /overlay_ws
 
