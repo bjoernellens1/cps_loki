@@ -130,3 +130,5 @@ RUN curl https://download.docker.com/linux/fedora/36/x86_64/stable/Packages/dock
 RUN microdnf -y install dnf \
     && dnf install -y ./docker-compose-plugin.rpm \
     && dnf clean all
+
+USER olivetin
