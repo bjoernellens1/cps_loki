@@ -96,18 +96,18 @@ LABEL org.opencontainers.image.source https://ghcr.io/bjoernellens1/cps_bot_mini
 LABEL org.opencontainers.image.title=OliveTin
 
 # Making sure there is newest docker version installed
-RUN dnf -y install dnf-plugins-core \
-    dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo \
-    dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+RUN dnf5 -y install dnf-plugins-core \
+    dnf5 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo \
+    dnf5 install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Install OliveTin and dependencies
 RUN mkdir -p /config /var/www/olivetin \
-    && dnf install -y --nodocs --noplugins --setopt=keepcache=0 --setopt=install_weak_deps=0 \
+    && dnf5 install -y --nodocs --noplugins --setopt=keepcache=0 --setopt=install_weak_deps=0 \
 		iputils \
 		openssh-clients \
 		shadow-utils \
         OliveTin \
-	&& dnf clean all
+	&& dnf5 clean all
 
 RUN useradd --system --create-home olivetin -u 1000
 
