@@ -125,4 +125,8 @@ FROM jamesread/olivetin AS olivetin
 
 USER root
 
-RUN microdnf -y install docker-compose-plugin
+RUN curl https://download.docker.com/linux/fedora/36/x86_64/stable/Packages/docker-compose-plugin-2.18.1-1.fc36.x86_64.rpm --output docker-compose-plugin.rpm
+
+RUN microdnf -y install dnf \
+    && dnf install -y ./docker-compose-plugin.rpm \
+    && dnf clean all
