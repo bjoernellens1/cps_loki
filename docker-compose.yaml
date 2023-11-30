@@ -135,7 +135,17 @@ services:
 
   config:
     container_name: olivetin
-    image: jamesread/olivetin
+    image: ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      tags:
+        - ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
+      target: olivetin
+      x-bake:
+        platforms:
+          - linux/arm64
+          - linux/amd64
     user: root
     volumes:
       - ./config/olivetin.yaml:/config/config.yaml # replace host path or volume as needed

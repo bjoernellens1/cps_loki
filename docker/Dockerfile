@@ -86,3 +86,39 @@ RUN source /bot_mini_ws/install/setup.bash \
 ENTRYPOINT [ "/entrypoint.sh" ]
 
 LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/cps_loki
+
+#############################################
+# OliveTin Build                            #
+#############################################
+FROM registry.fedoraproject.org/fedora-minimal:39 AS olivetin
+
+LABEL org.opencontainers.image.source https://github.com/OliveTin/OliveTin
+LABEL org.opencontainers.image.title=OliveTin
+
+# Making sure there is newest docker version installed
+RUN dnf -y install dnf-plugins-core \
+    dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo \
+    dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+RUN mkdir -p /config /var/www/olivetin \
+    && dnf install -y --nodocs --noplugins --setopt=keepcache=0 --setopt=install_weak_deps=0 \
+		iputils \
+		openssh-clients \
+		shadow-utils \
+	&& dnf clean all
+
+RUN useradd --system --create-home olivetin -u 1000
+
+EXPOSE 1337/tcp
+
+VOLUME /config
+
+COPY OliveTin /usr/bin/OliveTin
+COPY webui /var/www/olivetin/
+
+USER olivetin
+
+ENTRYPOINT [ "/usr/bin/OliveTin" ]
+
+
+
