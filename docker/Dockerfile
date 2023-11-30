@@ -123,4 +123,6 @@ LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/cps_loki
 
 FROM jamesread/olivetin AS olivetin
 
+USER root
+
 RUN microdnf -y install docker-compose-plugin
