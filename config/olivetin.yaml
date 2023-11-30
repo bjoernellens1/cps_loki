@@ -8,4 +8,4 @@ actions:
   - title: "Stop Mapping"
     shell: docker compose -f /home/bjorn/git/cps_loki/docker-compose.yaml down mapping
   - title: "Restart Teleop"
-    shell: docker-compose -f /home/bjorn/git/cps_loki/docker-compose.yaml restart teleop
+    shell: docker compose -f /home/bjorn/git/cps_loki/docker-compose.yaml restart teleop
