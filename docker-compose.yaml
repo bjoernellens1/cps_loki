@@ -2,12 +2,12 @@ version: "3.9"
 services:
   # Base image containing dependencies.
   base:
-    image: ghcr.io/bjoernellens1/cps_bot_mini_ws/bot:base
+    image: ghcr.io/bjoernellens1/cps_bot_mini_ws/base
     build:
       context: .
       dockerfile: docker/Dockerfile
       tags:
-        - ghcr.io/bjoernellens1/cps_bot_mini_ws/bot:base
+        - ghcr.io/bjoernellens1/cps_bot_mini_ws/base
       args:
         ROS_DISTRO: humble
         UNDERLAY_WS: cps_bot_mini_ws
@@ -39,12 +39,12 @@ services:
   # Overlay image containing the project specific source code.
   overlay:
     extends: base
-    image: ghcr.io/bjoernellens1/cps_bot_mini_ws/bot:overlay
+    image: ghcr.io/bjoernellens1/cps_bot_mini_ws/overlay
     build:
       context: .
       dockerfile: docker/Dockerfile
       tags:
-        - ghcr.io/bjoernellens1/cps_bot_mini_ws/bot:overlay
+        - ghcr.io/bjoernellens1/cps_bot_mini_ws/overlay
       target: overlay
       x-bake:
         platforms:
@@ -55,12 +55,12 @@ services:
   # Additional dependencies for GUI applications
   guis:
     extends: overlay
-    image: ghcr.io/bjoernellens1/cps_bot_mini_ws/bot:guis
+    image: ghcr.io/bjoernellens1/cps_bot_mini_ws/guis
     build:
       context: .
       dockerfile: docker/Dockerfile
       tags:
-        - ghcr.io/bjoernellens1/cps_bot_mini_ws/bot:guis
+        - ghcr.io/bjoernellens1/cps_bot_mini_ws/guis
       target: guis
       x-bake:
         platforms:
