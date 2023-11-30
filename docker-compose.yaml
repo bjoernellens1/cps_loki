@@ -24,7 +24,7 @@ services:
     network_mode: host
     ipc: host
     # Needed to display graphical applications
-    privileged: true
+    #privileged: true
     environment:
       # Allows graphical programs in the container.
       - DISPLAY=${DISPLAY}
@@ -127,8 +127,12 @@ services:
   # camera
   cam:
     extends: overlay
-    command: |
-      bash
+    command: >
+      ros2 launch ffmpeg_image_transport cam.launch.py
+    privileged: true
+    devices:
+      - /dev/dri:/dev/dri
+
   ################################################################################################################################
   # This section is mostly for supervision from PC                                                                               #
   ################################################################################################################################
