@@ -128,3 +128,8 @@ FROM alpine AS olivetin
 RUN wget https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.apk
 RUN apk add --allow-untrusted OliveTin_linux_amd64.apk
 
+# Expose the default OliveTin port
+EXPOSE 1337
+
+# Set the default command to run OliveTin
+CMD ["OliveTin"]
