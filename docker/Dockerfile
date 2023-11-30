@@ -97,9 +97,9 @@ LABEL org.opencontainers.image.title=OliveTin
 
 # Making sure there is newest docker version installed
 RUN dnf -y install dnf-plugins-core \
-    dnf -y install 'dnf-command(config-manager)' \
-    dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo \
-    dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    && dnf -y install 'dnf-command(config-manager)' \
+    && dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo \
+    && dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Install OliveTin and dependencies
 RUN mkdir -p /config /var/www/olivetin \
