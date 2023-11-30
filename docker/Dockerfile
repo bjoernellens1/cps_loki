@@ -106,7 +106,7 @@ RUN mkdir -p /config /var/www/olivetin \
 		iputils \
 		openssh-clients \
 		shadow-utils \
-        OliveTin
+        OliveTin \
 	&& dnf clean all
 
 RUN useradd --system --create-home olivetin -u 1000
