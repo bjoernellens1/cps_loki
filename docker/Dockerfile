@@ -121,15 +121,15 @@ LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/cps_loki
 
 # ENTRYPOINT [ "/usr/bin/OliveTin" ]
 
-FROM alpine AS olivetin
+# FROM alpine AS olivetin
 
 
 
-RUN wget https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.apk
-RUN apk add --allow-untrusted OliveTin_linux_amd64.apk docker-cli-compose
+# RUN wget https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.apk
+# RUN apk add --allow-untrusted OliveTin_linux_amd64.apk docker-cli-compose
 
-# Expose the default OliveTin port
-EXPOSE 1337
+# # Expose the default OliveTin port
+# EXPOSE 1337
 
-# Set the default command to run OliveTin
-CMD ["OliveTin"]
+# # Set the default command to run OliveTin
+# CMD ["OliveTin"]
