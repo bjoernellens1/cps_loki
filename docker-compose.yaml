@@ -134,6 +134,12 @@ services:
     devices:
       - /dev/dri:/dev/dri
 
+  ###################################################################################################################################
+  # Webgui Supervision via Foxglove Studio                                                                                          #
+  ###################################################################################################################################
+
+
+
   # config:
   #   container_name: olivetin
   #   image: ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
@@ -161,6 +167,45 @@ services:
   ################################################################################################################################
   # This section is mostly for supervision from PC                                                                               #
   ################################################################################################################################
+
+  foxglove-bridge:
+    image: husarion/foxglove-bridge:humble
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+    # Needed to display graphical applications
+    #privileged: true
+    environment:
+      # Allows graphical programs in the container.
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - ROS_DOMAIN_ID=5
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+    foxglove-studio:
+    image: husarion/foxglove
+    depends_on:
+      - foxglove-bridge
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking and IPC for ROS 2
+    network_mode: host
+    ipc: host
+    # Needed to display graphical applications
+    #privileged: true
+    environment:
+      # Allows graphical programs in the container.
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - ROS_DOMAIN_ID=5
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
   # rviz2
   rviz2:
     extends: guis
