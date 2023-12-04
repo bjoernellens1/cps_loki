@@ -186,12 +186,12 @@ services:
       - ROS_DOMAIN_ID=5
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
-    foxglove:
-      image: husarion/foxglove
-      depends_on:
-        - foxglove-bridge
-      ports:
-        - 8080:8080
+  foxglove:
+    image: husarion/foxglove
+    depends_on:
+      - foxglove-bridge
+    ports:
+      - 8080:8080
 
   # rviz2
   rviz2:
