@@ -78,6 +78,7 @@ services:
     extends: overlay
     command: |
       ros2 launch cps_loki_bringup robot_controller.launch.py
+    privileged: true
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
       - /dev/ttyACM0:/dev/ttyACM0
