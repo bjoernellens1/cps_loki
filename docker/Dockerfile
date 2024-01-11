@@ -93,45 +93,45 @@ LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/cps_loki
 #############################################
 # OliveTin Build                            #
 #############################################
-# FROM registry.fedoraproject.org/fedora:39 AS olivetin
+FROM registry.fedoraproject.org/fedora:39 AS olivetin
 
-# LABEL org.opencontainers.image.source https://ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
-# LABEL org.opencontainers.image.title=OliveTin
+LABEL org.opencontainers.image.source https://ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
+LABEL org.opencontainers.image.title=OliveTin
 
-# # Making sure there is newest docker version installed
-# RUN dnf -y install dnf-plugins-core \
-#     && dnf -y install 'dnf-command(config-manager)' \
-#     && dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo \
-#     && dnf -y install docker-ce-cli docker-compose-plugin --setopt=install_weak_deps=False
+# Making sure there is newest docker version installed
+RUN dnf -y install dnf-plugins-core \
+    && dnf -y install 'dnf-command(config-manager)' \
+    && dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo \
+    && dnf -y install docker-ce-cli docker-compose-plugin --setopt=install_weak_deps=False
 
-# # Install OliveTin and dependencies
-# RUN mkdir -p /config /var/www/olivetin \
-#     && dnf install -y --nodocs --noplugins --setopt=keepcache=0 --setopt=install_weak_deps=0 \
-# 		iputils \
-# 		openssh-clients \
-# 		shadow-utils \
-#         OliveTin \
-# 	&& dnf clean all
+# Install OliveTin and dependencies
+RUN mkdir -p /config /var/www/olivetin \
+    && dnf install -y --nodocs --noplugins --setopt=keepcache=0 --setopt=install_weak_deps=0 \
+		iputils \
+		openssh-clients \
+		shadow-utils \
+        OliveTin \
+	&& dnf clean all
 
-# RUN useradd --system --create-home olivetin -u 1000
+RUN useradd --system --create-home olivetin -u 1000
 
-# EXPOSE 1337/tcp
+EXPOSE 1337/tcp
 
-# VOLUME /config
+VOLUME /config
 
-# USER olivetin
+USER olivetin
 
-# ENTRYPOINT [ "/usr/bin/OliveTin" ]
+ENTRYPOINT [ "/usr/bin/OliveTin" ]
 
-# FROM alpine AS olivetin
+FROM docker AS olivetin
 
+RUN wget https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.apk
+RUN apk add --allow-untrusted OliveTin_linux_amd64.apk
+# RUN wget https://github.com/OliveTin/OliveTin/releases/download/2023.12.21/OliveTin_linux_amd64.deb
+# RUN apt install ./OliveTin_linux_amd64.deb
 
+# Expose the default OliveTin port
+EXPOSE 1337
 
-# RUN wget https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.apk
-# RUN apk add --allow-untrusted OliveTin_linux_amd64.apk docker-cli-compose
-
-# # Expose the default OliveTin port
-# EXPOSE 1337
-
-# # Set the default command to run OliveTin
-# CMD ["OliveTin"]
+# Set the default command to run OliveTin
+CMD ["OliveTin"]

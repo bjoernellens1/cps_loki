@@ -157,12 +157,58 @@ services:
   #   privileged: true
   #   volumes:
   #     - ./config/olivetin.yaml:/config/config.yaml # replace host path or volume as needed
-  #     - .:/repo
+  #     # - .:/repo
   #     - /var/run/docker.sock:/var/run/docker.sock
-  #     - /var/lib/docker:/var/lib/docker
+  #     # - /var/lib/docker:/var/lib/docker
   #   ports:
-  #     - "88:1337"
+  #     - "80:1337"
   #   restart: unless-stopped
+
+  config:
+    container_name: olivetin
+    image: jamesread/olivetin
+    #image: ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      tags:
+        - ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
+      target: olivetin
+      x-bake:
+        platforms:
+          #- linux/arm64
+          - linux/amd64
+    user: root
+    privileged: true
+    volumes:
+      - ./config/olivetin/:/config/ # here is config.yaml and icons located
+      - ./config/olivetin/icons:/var/www/olivetin/customIcons
+      - .:/repo
+      - /var/run/docker.sock:/var/run/docker.sock
+      
+      # - /var/lib/docker:/var/lib/docker
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+    ports:
+      - "80:1337"
+    restart: unless-stopped
+
+  portainer:
+    container_name: portainer
+    #image: jamesread/olivetin
+    image: portainer/portainer-ce:latest
+    volumes:
+      - ./config/olivetin/:/config/ # here is config.yaml and icons located
+      - ./config/olivetin/icons:/var/www/olivetin/customIcons
+      - .:/repo
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+      
+      # - /var/lib/docker:/var/lib/docker
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+    ports:
+      - "8000:8000"
+      - "9443:9443"
+    restart: unless-stopped
 
   ################################################################################################################################
   # This section is mostly for supervision from PC                                                                               #
@@ -201,3 +247,5 @@ services:
     # Needed to display graphical applications
     privileged: true
 networks: {}
+volumes: 
+  portainer_data:
