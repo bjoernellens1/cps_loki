@@ -68,6 +68,9 @@ services:
           - linux/amd64
     command: |
       /bin/bash
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/snd:/dev/snd
   # Robot State Publisher
   robot_state_publisher:
     extends: overlay
@@ -133,6 +136,17 @@ services:
     privileged: true
     devices:
       - /dev/dri:/dev/dri
+
+  whisper:
+    extends: overlay
+    command: >
+      ros2 launch whisper_bringup bringup.launch.py n_thread:=20
+    #privileged: true
+    devices:
+      - /dev/dri:/dev/dri
+    #  - /dev/snd/controlC0:/dev/snd/controlC0 #/dev/snd:/dev/snd
+    privileged: true
+    restart: unless-stopped
 
   ###################################################################################################################################
   # Webgui Supervision via Foxglove Studio                                                                                          #

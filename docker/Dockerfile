@@ -61,7 +61,7 @@ WORKDIR /overlay_ws
 
 RUN source /bot_mini_ws/install/setup.bash \
  && apt-get update \
- && apt-get install -y ros-${ROS_DISTRO}-image-transport ros-${ROS_DISTRO}-cv-bridge \
+ && apt-get install -y ros-${ROS_DISTRO}-image-transport ros-${ROS_DISTRO}-cv-bridge wget python3-pyaudio python3-pynput python3-pip \
  && rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y \
  && colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo\
  && rm -rf /var/lib/apt/lists/*

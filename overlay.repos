@@ -18,3 +18,8 @@ repositories:
         type: git
         url: https://github.com/bjoernellens1/cps_loki_bringup
         version: main
+
+    ros2_whisper:
+        type: git
+        url: https://github.com/ros-ai/ros2_whisper
+        version: main
