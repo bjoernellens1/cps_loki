@@ -214,30 +214,48 @@ services:
   # This section is mostly for supervision from PC                                                                               #
   ################################################################################################################################
 
+  # foxglove-bridge:
+  #   image: husarion/foxglove-bridge:humble
+  #   # Interactive shell
+  #   stdin_open: true
+  #   tty: true
+  #   # Networking and IPC for ROS 2
+  #   network_mode: host
+  #   ipc: host
+  #   # Needed to display graphical applications
+  #   #privileged: true
+  #   environment:
+  #     # Allows graphical programs in the container.
+  #     - DISPLAY=${DISPLAY}
+  #     - QT_X11_NO_MITSHM=1
+  #     - NVIDIA_DRIVER_CAPABILITIES=all
+  #     - ROS_DOMAIN_ID=5
+  #     - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+  # Foxglove Studio Bridge
   foxglove-bridge:
-    image: husarion/foxglove-bridge:humble
-    # Interactive shell
+    extends: overlay
+    command: >
+      ros2 launch foxglove_bridge foxglove_bridge_launch.xml port:=8765
     stdin_open: true
     tty: true
     # Networking and IPC for ROS 2
-    network_mode: host
+    #network_mode: host
     ipc: host
-    # Needed to display graphical applications
-    #privileged: true
     environment:
-      # Allows graphical programs in the container.
-      - DISPLAY=${DISPLAY}
-      - QT_X11_NO_MITSHM=1
-      - NVIDIA_DRIVER_CAPABILITIES=all
       - ROS_DOMAIN_ID=5
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
   foxglove:
-    image: husarion/foxglove
+    #image: husarion/foxglove
+    image: ghcr.io/foxglove/studio:latest
     depends_on:
       - foxglove-bridge
     ports:
       - 8080:8080
+    volumes:
+      - ./config/foxglove/extensions:/src/extensions
+      - ./config/foxglove/foxglove-layout.json:/foxglove/default-layout.json
 
   # rviz2
   rviz2:
