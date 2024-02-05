@@ -161,7 +161,7 @@ services:
   #     - "80:1337"
   #   restart: unless-stopped
 
-  config:
+  olivetin:
     container_name: olivetin
     image: jamesread/olivetin
     #image: ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
@@ -280,6 +280,12 @@ services:
     volumes:
       - ./config/npm:/data
       - ./letsencrypt:/etc/letsencrypt
+
+  management:
+    depends_on:
+      - npm
+      - foxglove
+      - olivetin
 
 ################################################################################################################################
 # Docker related extra stuff                                                                                                   #
