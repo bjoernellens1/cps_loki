@@ -120,7 +120,7 @@ services:
     command: >
       ros2 launch nav2_bringup bringup_launch.py slam:=True map:=/repo/map.yaml
       use_sim_time:=False use_composition:=True
-      params_file:=/overlay_ws/src/cps_loki_bringup/config/nav2.yaml
+      params_file:=/repo/config/nav2_params.yaml
     depends_on:
       - lidar
       - controller
@@ -137,9 +137,6 @@ services:
   ###################################################################################################################################
   # Webgui Supervision via Foxglove Studio                                                                                          #
   ###################################################################################################################################
-
-
-
   # config:
   #   container_name: olivetin
   #   image: ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
@@ -233,7 +230,7 @@ services:
   #     - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
   # Foxglove Studio Bridge
-  foxglove-bridge:
+  foxglove_bridge:
     extends: overlay
     command: >
       ros2 launch foxglove_bridge foxglove_bridge_launch.xml port:=8765
@@ -250,7 +247,7 @@ services:
     #image: husarion/foxglove
     image: ghcr.io/foxglove/studio:latest
     depends_on:
-      - foxglove-bridge
+      - foxglove_bridge
     ports:
       - 8080:8080
     volumes:
@@ -264,6 +261,29 @@ services:
       rviz2
     # Needed to display graphical applications
     privileged: true
+
+
+
+################################################################################################################################
+# Core Services for Web Management                                                                                             #
+################################################################################################################################
+
+  npm: # nginx proxy manager for reverse proxying the webservices
+    #user "bjoern.ellensohn@unileoben.ac.at" 
+    #password "cpsloki_npm"
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: always #unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./config/npm:/data
+      - ./letsencrypt:/etc/letsencrypt
+
+################################################################################################################################
+# Docker related extra stuff                                                                                                   #
+################################################################################################################################
 networks: {}
 volumes: 
   portainer_data:
