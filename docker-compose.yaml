@@ -36,6 +36,7 @@ services:
       # Allows graphical programs in the container.
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ${XAUTHORITY:-$HOME/.Xauthority}:/root/.Xauthority
+    restart: unless-stopped
   # Overlay image containing the project specific source code.
   overlay:
     extends: base
@@ -137,30 +138,6 @@ services:
   ###################################################################################################################################
   # Webgui Supervision via Foxglove Studio                                                                                          #
   ###################################################################################################################################
-  # config:
-  #   container_name: olivetin
-  #   image: ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
-  #   build:
-  #     context: .
-  #     dockerfile: docker/Dockerfile
-  #     tags:
-  #       - ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
-  #     target: olivetin
-  #     x-bake:
-  #       platforms:
-  #         #- linux/arm64
-  #         - linux/amd64
-  #   #user: root
-  #   privileged: true
-  #   volumes:
-  #     - ./config/olivetin.yaml:/config/config.yaml # replace host path or volume as needed
-  #     # - .:/repo
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #     # - /var/lib/docker:/var/lib/docker
-  #   ports:
-  #     - "80:1337"
-  #   restart: unless-stopped
-
   olivetin:
     container_name: olivetin
     image: jamesread/olivetin
@@ -186,7 +163,7 @@ services:
       # - /var/lib/docker:/var/lib/docker
       - ~/.ssh/id_rsa:/root/.ssh/id_rsa
     ports:
-      - "80:1337"
+      - "1337:1337"
     restart: unless-stopped
 
   portainer:
@@ -268,22 +245,35 @@ services:
 # Core Services for Web Management                                                                                             #
 ################################################################################################################################
 
-  npm: # nginx proxy manager for reverse proxying the webservices
-    #user "bjoern.ellensohn@unileoben.ac.at" 
-    #password "cpsloki_npm"
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: always #unless-stopped
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    volumes:
-      - ./config/npm:/data
-      - ./letsencrypt:/etc/letsencrypt
+  # npm: # nginx proxy manager for reverse proxying the webservices
+  #   #user "bjoern.ellensohn@unileoben.ac.at" 
+  #   #password "cpsloki_npm"
+  #   image: 'jc21/nginx-proxy-manager:latest'
+  #   restart: unless-stopped
+  #   ports:
+  #     - '80:80'
+  #     - '81:81'
+  #     - '443:443'
+  #   extra_hosts:
+  #   - "host.docker.internal:host-gateway"
+  #   #network_mode: host
+  #   volumes:
+  #     - ./config/npm:/data
+  #     - ./config/npm/letsencrypt:/etc/letsencrypt
+  #   depends_on:
+  #     - foxglove
+  #     - olivetin
 
-  management:
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./config/caddy/content:/usr/share/caddy/
+    restart: always
     depends_on:
-      - npm
       - foxglove
       - olivetin
 

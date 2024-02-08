@@ -1,0 +1,17 @@
+http://loki {
+	root * /usr/share/caddy
+	file_server browse
+}
+
+http://browse.loki {
+	root * /usr/share/caddy
+	file_server browse
+}
+
+http://config.loki {
+	reverse_proxy olivetin:1337
+}
+
+http://control.loki {
+	reverse_proxy foxglove:8080
+}

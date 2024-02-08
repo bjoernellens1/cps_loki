@@ -43,6 +43,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  ros-${ROS_DISTRO}-xacro \
  && rm -rf /var/lib/apt/lists/*
 
+# Install Foxglove Bridge
+RUN apt-get update && apt-get install -y --no-install-recommends \
+ ros-${ROS_DISTRO}-foxglove-bridge \
+ && rm -rf /var/lib/apt/lists/*
+
 ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 ###########################################
