@@ -1,17 +1,43 @@
+# http://loki {
+# 	root * /usr/share/caddy
+# 	file_server browse
+# }
+
+# http://loki/config {
+# 	reverse_proxy /config/* foxglove:8080
+# }
+
+# http://browse.loki {
+# 	root * /usr/share/caddy
+# 	file_server browse
+# }
+
+# http://config.loki {
+# 	reverse_proxy localhost:1337
+# }
+
+# http://control.loki {
+# 	reverse_proxy foxglove:8080
+# }
+
 http://loki {
 	root * /usr/share/caddy
 	file_server browse
+
+	handle_path /config* {
+		#rewrite * /
+		reverse_proxy olivetin:1337
+	}
+
+	handle_path /viz* {
+		#rewrite * /
+		reverse_proxy foxglove:8080
+	}
 }
 
-http://browse.loki {
-	root * /usr/share/caddy
-	file_server browse
-}
-
-http://config.loki {
-	reverse_proxy olivetin:1337
-}
-
-http://control.loki {
-	reverse_proxy foxglove:8080
-}
+# http://loki/config {
+# 	handle_path /config* {
+# 		rewrite * /
+# 		reverse_proxy olivetin:1337
+# 	}
+# }

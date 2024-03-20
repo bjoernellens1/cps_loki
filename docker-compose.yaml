@@ -162,6 +162,8 @@ services:
       
       # - /var/lib/docker:/var/lib/docker
       - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+    networks:
+      - caddy_network
     ports:
       - "1337:1337"
     restart: unless-stopped
@@ -225,6 +227,8 @@ services:
     image: ghcr.io/foxglove/studio:latest
     depends_on:
       - foxglove_bridge
+    networks:
+      - caddy_network
     ports:
       - 8080:8080
     volumes:
@@ -245,27 +249,31 @@ services:
 # Core Services for Web Management                                                                                             #
 ################################################################################################################################
 
-  # npm: # nginx proxy manager for reverse proxying the webservices
-  #   #user "bjoern.ellensohn@unileoben.ac.at" 
-  #   #password "cpsloki_npm"
-  #   image: 'jc21/nginx-proxy-manager:latest'
-  #   restart: unless-stopped
-  #   ports:
-  #     - '80:80'
-  #     - '81:81'
-  #     - '443:443'
-  #   extra_hosts:
-  #   - "host.docker.internal:host-gateway"
-  #   #network_mode: host
-  #   volumes:
-  #     - ./config/npm:/data
-  #     - ./config/npm/letsencrypt:/etc/letsencrypt
-  #   depends_on:
-  #     - foxglove
-  #     - olivetin
+  npm: # nginx proxy manager for reverse proxying the webservices
+    #user "bjoern.ellensohn@unileoben.ac.at" cpsAdmin@unileoben.ac.at
+    #password "cpsloki_npm"
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    networks:
+      - caddy_network
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    #network_mode: host
+    volumes:
+      - npm-data:/data
+      - npm-letsencrypt:/etc/letsencrypt
+    depends_on:
+      - foxglove
+      - olivetin
 
   caddy:
     image: caddy:latest
+    networks:
+      - caddy_network
     ports:
       - "80:80"
       - "443:443"
@@ -280,6 +288,10 @@ services:
 ################################################################################################################################
 # Docker related extra stuff                                                                                                   #
 ################################################################################################################################
-networks: {}
+networks:
+  caddy_network:
+    driver: bridge
 volumes: 
   portainer_data:
+  npm-data:
+  npm-letsencrypt:
