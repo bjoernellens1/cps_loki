@@ -249,26 +249,26 @@ services:
 # Core Services for Web Management                                                                                             #
 ################################################################################################################################
 
-  npm: # nginx proxy manager for reverse proxying the webservices
-    #user "bjoern.ellensohn@unileoben.ac.at" cpsAdmin@unileoben.ac.at
-    #password "cpsloki_npm"
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: unless-stopped
-    networks:
-      - caddy_network
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    extra_hosts:
-    - "host.docker.internal:host-gateway"
-    #network_mode: host
-    volumes:
-      - npm-data:/data
-      - npm-letsencrypt:/etc/letsencrypt
-    depends_on:
-      - foxglove
-      - olivetin
+  # npm: # nginx proxy manager for reverse proxying the webservices
+  #   #user "bjoern.ellensohn@unileoben.ac.at" cpsAdmin@unileoben.ac.at
+  #   #password "cpsloki_npm"
+  #   image: 'jc21/nginx-proxy-manager:latest'
+  #   restart: unless-stopped
+  #   networks:
+  #     - caddy_network
+  #   ports:
+  #     - '80:80'
+  #     - '81:81'
+  #     - '443:443'
+  #   extra_hosts:
+  #   - "host.docker.internal:host-gateway"
+  #   #network_mode: host
+  #   volumes:
+  #     - npm-data:/data
+  #     - npm-letsencrypt:/etc/letsencrypt
+  #   depends_on:
+  #     - foxglove
+  #     - olivetin
 
   caddy:
     image: caddy:latest
