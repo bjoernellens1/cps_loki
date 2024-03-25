@@ -83,7 +83,7 @@ services:
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
       - /dev/ttyACM0:/dev/ttyACM0
-    restart: unless-stopped
+    restart: always
   # teleop
   teleop:
     extends: overlay
@@ -91,7 +91,7 @@ services:
       ros2 launch cps_loki_bringup robot_joy_teleop.launch.py
     devices:
       - /dev/input:/dev/input
-    restart: unless-stopped
+    restart: always
   # scan filter node
   lidar_filter:
     extends: overlay
@@ -166,7 +166,7 @@ services:
       - caddy_network
     ports:
       - "1337:1337"
-    restart: unless-stopped
+    restart: always
 
   portainer:
     container_name: portainer
@@ -190,24 +190,6 @@ services:
   # This section is mostly for supervision from PC                                                                               #
   ################################################################################################################################
 
-  # foxglove-bridge:
-  #   image: husarion/foxglove-bridge:humble
-  #   # Interactive shell
-  #   stdin_open: true
-  #   tty: true
-  #   # Networking and IPC for ROS 2
-  #   network_mode: host
-  #   ipc: host
-  #   # Needed to display graphical applications
-  #   #privileged: true
-  #   environment:
-  #     # Allows graphical programs in the container.
-  #     - DISPLAY=${DISPLAY}
-  #     - QT_X11_NO_MITSHM=1
-  #     - NVIDIA_DRIVER_CAPABILITIES=all
-  #     - ROS_DOMAIN_ID=5
-  #     - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-
   # Foxglove Studio Bridge
   foxglove_bridge:
     extends: overlay
@@ -225,6 +207,7 @@ services:
   foxglove:
     #image: husarion/foxglove
     image: ghcr.io/foxglove/studio:latest
+    restart: always
     depends_on:
       - foxglove_bridge
     networks:
@@ -248,28 +231,6 @@ services:
 ################################################################################################################################
 # Core Services for Web Management                                                                                             #
 ################################################################################################################################
-
-  # npm: # nginx proxy manager for reverse proxying the webservices
-  #   #user "bjoern.ellensohn@unileoben.ac.at" cpsAdmin@unileoben.ac.at
-  #   #password "cpsloki_npm"
-  #   image: 'jc21/nginx-proxy-manager:latest'
-  #   restart: unless-stopped
-  #   networks:
-  #     - caddy_network
-  #   ports:
-  #     - '80:80'
-  #     - '81:81'
-  #     - '443:443'
-  #   extra_hosts:
-  #   - "host.docker.internal:host-gateway"
-  #   #network_mode: host
-  #   volumes:
-  #     - npm-data:/data
-  #     - npm-letsencrypt:/etc/letsencrypt
-  #   depends_on:
-  #     - foxglove
-  #     - olivetin
-
   caddy:
     image: caddy:latest
     networks:
