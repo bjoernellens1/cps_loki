@@ -5,16 +5,16 @@ showFooter: false
 
 actions:
   - title: "Start Navigation Stack"
-    shell: podman-compose -f /repo/docker-compose.yaml up -d navigation
+    shell: docker start cps_loki-navigation-1
     icon: '<img src = "customIcons/nav2_start.png" width = "48px"/>'
   - title: "Stop Navigation Stack"
-    shell: docker compose -f /repo/docker-compose.yaml down navigation
+    shell: docker stop cps_loki-navigation-1
     icon: '<img src = "customIcons/nav2_stop.png" width = "48px"/>'
   - title: "Start Mapping"
-    shell: docker compose -f /repo/docker-compose.yaml up -d mapping
+    shell: docker start cps_loki-mapping-1
     icon: '<img src = "customIcons/mapping_start.gif" width = "48px"/>'
   - title: "Stop Mapping"
-    shell: docker compose -f /repo/docker-compose.yaml down mapping
+    shell: docker stop cps_loki-mapping-1
     icon: '<img src = "customIcons/mapping_stop.gif" width = "48px"/>'
   - title: "Restart Teleop"
     icon: '<img src = "customIcons/gamepad.png" width = "48px"/>'
@@ -28,9 +28,8 @@ actions:
         choices:
           - value: reboot
           - value: shutdown
-          - value: grafana
   # This will SSH into a server an run the command 'service httpd restart'
-  - title: Restart httpd on Server 1
-    shell: ssh bjorn@loki.local 'echo "it works"'
-    icon: ping
-    timeout: 5
+  # - title: Restart httpd on Server 1
+  #   shell: ssh bjorn@loki.local 'echo "it works"'
+  #   icon: ping
+  #   timeout: 5

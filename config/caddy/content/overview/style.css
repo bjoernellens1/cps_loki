@@ -223,6 +223,12 @@ a, a:visited, a:hover, a:active {
         float: right;
     }
 
+    #BLOCK_THREE
+    {
+        max-width: 49.5%;
+        float: right;
+    }
+
     .qr_2
     {
         max-width: 80%;
