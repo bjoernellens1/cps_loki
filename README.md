@@ -1,5 +1,8 @@
 # cps_loki main repo
 
+![image](https://github.com/bjoernellens1/cps_loki/assets/64093272/1d2f1a41-c179-4c87-af40-61dde2f572a8)
+
+
 ## Now working via Docker!
 Follow the instructions: To use this you need the latest Docker installed and for the multiplatform build the binfmt dependencies for your system. Otherwise just use the pre-built Docker containers. I will try to make the images available public.
 
