@@ -233,6 +233,8 @@ services:
     image: caddy:latest
     networks:
       - caddy_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "80:80"
       - "443:443"
@@ -260,10 +262,14 @@ services:
     environment:
       - ROS_DOMAIN_ID=5
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-    restart: no
+    restart: always
   webui-joystick:
     image: husarion/webui-ros-joystick:noetic-0.0.1-20230510-stable
     network_mode: host
+    # networks:
+    #   - caddy_network
+    # ports:
+    #   - 8000:8000
     ipc: host
     environment:
       - ROS_DOMAIN_ID=5

@@ -12,30 +12,22 @@
 </head>
 
 <header>
-    <h1 id="HEADLINE">CPS Bot Mini Overview<img src="CPS_Logo_White_square_TRANSP.png" id="LOGO"></h1>
+    <h1 id="HEADLINE">Loki Overview<img src="CPS_Logo_White_square_TRANSP.png" id="LOGO"></h1>
 </header>
 
 <body>
-    <div class="box" id="LEFT">
-        <p class="mini-heads">Connect to Wi-Fi:</p>
-        <!-- replace mit relativen Link!!!, bei mir spinnts und es wird das gebrochene Bild symbol angezeigt. Anders geht
-        es allerdings, falls nicht bei dir sags mir -->
-        <img src="qr-loki.wifi.svg" class="qr">
-        <div id="NORM_SET">
-            <table>
-                <tr>
-                    <td>SSID:</td>
-                    <td>cps-loki</td>
-                </tr>
-                <tr>
-                    <td>Password: </td>
-                    <td>cps-loki</td>
-                </tr>
-            </table>
-        </div>
-    </div>
 
     <div class="box" id="RIGHT">
+        <div id="BLOCK_ONE">
+            <p class="mini-heads">Teleop:</p>
+            <!-- again -->
+            <!-- Replace link at href -->
+            <!-- hier Link zu Joystick -->
+            <a href="http://loki:8000/">
+            <img src="joystick.png" class="qr qr_2"></a>
+            <br>
+        </div>
+
         <div id="BLOCK_ONE">
             <p class="mini-heads">Robot Configuration:</p>
             <!-- again -->
@@ -64,12 +56,31 @@
             <p class="mini-heads">Manual:</p>
             <!-- again -->
             <!-- hier Link zu Manual -->
-            <a href="https://www.unileoben.ac.at/universitaet/lehrstuehle/institute/department-product-engineering/lehrstuhl-fuer-cyber-physical-systems/">
+            <a href="https://cps.unileoben.ac.at">
                 <img src="blueprint.svg" class="qr qr_2">
             </a>
             <br>
         </div>
 
+    </div>
+
+    <div class="box" id="LEFT">
+        <p class="mini-heads">Connect to Wi-Fi:</p>
+        <!-- replace mit relativen Link!!!, bei mir spinnts und es wird das gebrochene Bild symbol angezeigt. Anders geht
+        es allerdings, falls nicht bei dir sags mir -->
+        <img src="qr-loki.wifi.svg" class="qr">
+        <div id="NORM_SET">
+            <table>
+                <tr>
+                    <td>SSID:</td>
+                    <td>cps-loki</td>
+                </tr>
+                <tr>
+                    <td>Password: </td>
+                    <td>cps-loki</td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <div class="info">
