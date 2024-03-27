@@ -1,1 +1,5 @@
 .vscode
+config/npm/keys.json
+config/npm/logs
+
+maps/

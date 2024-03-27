@@ -1,0 +1,169 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="apple-mobile-web-app-capable" content="yes"><title>Foxglove Studio</title><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/><style id="loading-styles">body {
+    margin: 0;
+  }
+  #root {
+    height: 100vh;
+    background-color: #f4f4f5;
+    color: #393939;
+  }
+  @media (prefers-color-scheme: dark) {
+    #root {
+      background-color: #15151a};
+      color: #e1e1e4;
+    }
+  }</style><script defer="defer" src="main.c33a35baf28db3973be7.js"></script></head><script>global = globalThis;
+globalThis.FOXGLOVE_STUDIO_DEFAULT_LAYOUT = [{
+"configById": {
+"virtual-joystick.Virtual Joystick!26sdvuh": {
+"topic": "/cmd_vel",
+"publishRate": 60,
+"maxLinearSpeed": 0.5,
+"maxAngularSpeed": 2
+},
+"3D!18i6zy7": {
+"layers": {
+  "845139cb-26bc-40b3-8161-8ab60af4baf5": {
+    "visible": true,
+    "frameLocked": true,
+    "label": "Grid",
+    "instanceId": "845139cb-26bc-40b3-8161-8ab60af4baf5",
+    "layerId": "foxglove.Grid",
+    "size": 10,
+    "divisions": 10,
+    "lineWidth": 1,
+    "color": "#248eff",
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "order": 1
+  }
+},
+"cameraState": {
+  "distance": 20,
+  "perspective": true,
+  "phi": 60,
+  "target": [
+    0,
+    0,
+    0
+  ],
+  "targetOffset": [
+    0,
+    0,
+    0
+  ],
+  "targetOrientation": [
+    0,
+    0,
+    0,
+    1
+  ],
+  "thetaOffset": 45,
+  "fovy": 45,
+  "near": 0.5,
+  "far": 5000
+},
+"followMode": "follow-pose",
+"scene": {},
+"transforms": {},
+"topics": {},
+"publish": {
+  "type": "point",
+  "poseTopic": "/move_base_simple/goal",
+  "pointTopic": "/clicked_point",
+  "poseEstimateTopic": "/initialpose",
+  "poseEstimateXDeviation": 0.5,
+  "poseEstimateYDeviation": 0.5,
+  "poseEstimateThetaDeviation": 0.26179939
+},
+"imageMode": {}
+},
+"Image!3mnp456": {
+"cameraState": {
+  "distance": 20,
+  "perspective": true,
+  "phi": 60,
+  "target": [
+    0,
+    0,
+    0
+  ],
+  "targetOffset": [
+    0,
+    0,
+    0
+  ],
+  "targetOrientation": [
+    0,
+    0,
+    0,
+    1
+  ],
+  "thetaOffset": 45,
+  "fovy": 45,
+  "near": 0.5,
+  "far": 5000
+},
+"followMode": "follow-pose",
+"scene": {},
+"transforms": {},
+"topics": {},
+"layers": {},
+"publish": {
+  "type": "point",
+  "poseTopic": "/move_base_simple/goal",
+  "pointTopic": "/clicked_point",
+  "poseEstimateTopic": "/initialpose",
+  "poseEstimateXDeviation": 0.5,
+  "poseEstimateYDeviation": 0.5,
+  "poseEstimateThetaDeviation": 0.26179939
+},
+"imageMode": {}
+},
+"RawMessages!os6rgs": {
+"diffEnabled": false,
+"diffMethod": "custom",
+"diffTopicPath": "",
+"showFullMessageForDiff": false,
+"topicPath": ""
+},
+"Battery Indicator.Battery display!3gjrnnu": {
+"batteryTopic": "",
+"topic": {
+  "batteryTopic": ""
+}
+}
+},
+"globalVariables": {},
+"userNodes": {},
+"playbackConfig": {
+"speed": 1
+},
+"layout": {
+"direction": "row",
+"first": "virtual-joystick.Virtual Joystick!26sdvuh",
+"second": {
+"first": "3D!18i6zy7",
+"second": {
+  "first": "Image!3mnp456",
+  "second": {
+    "first": "RawMessages!os6rgs",
+    "second": "Battery Indicator.Battery display!3gjrnnu",
+    "direction": "column",
+    "splitPercentage": 79.02494331065759
+  },
+  "direction": "column",
+  "splitPercentage": 30
+},
+"direction": "row",
+"splitPercentage": 70
+}
+}
+}][0];</script><body><div id="root"></div></body></html>

@@ -17,4 +17,4 @@ repositories:
     cps_loki_bringup:
         type: git
         url: https://github.com/bjoernellens1/cps_loki_bringup
-        version: main
+        version: tuning

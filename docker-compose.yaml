@@ -36,6 +36,7 @@ services:
       # Allows graphical programs in the container.
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ${XAUTHORITY:-$HOME/.Xauthority}:/root/.Xauthority
+    restart: unless-stopped
   # Overlay image containing the project specific source code.
   overlay:
     extends: base
@@ -82,7 +83,7 @@ services:
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
       - /dev/ttyACM0:/dev/ttyACM0
-    restart: unless-stopped
+    restart: always
   # teleop
   teleop:
     extends: overlay
@@ -90,7 +91,7 @@ services:
       ros2 launch cps_loki_bringup robot_joy_teleop.launch.py
     devices:
       - /dev/input:/dev/input
-    restart: unless-stopped
+    restart: always
   # scan filter node
   lidar_filter:
     extends: overlay
@@ -120,7 +121,7 @@ services:
     command: >
       ros2 launch nav2_bringup bringup_launch.py slam:=True map:=/repo/map.yaml
       use_sim_time:=False use_composition:=True
-      params_file:=/overlay_ws/src/cps_loki_bringup/config/nav2_params.yaml
+      params_file:=/repo/config/nav2_params.yaml
     depends_on:
       - lidar
       - controller
@@ -137,61 +138,85 @@ services:
   ###################################################################################################################################
   # Webgui Supervision via Foxglove Studio                                                                                          #
   ###################################################################################################################################
+  olivetin:
+    container_name: olivetin
+    image: jamesread/olivetin
+    #image: ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      tags:
+        - ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
+      target: olivetin
+      x-bake:
+        platforms:
+          #- linux/arm64
+          - linux/amd64
+    user: root
+    privileged: true
+    volumes:
+      - ./config/olivetin/:/config/ # here is config.yaml and icons located
+      - ./config/olivetin/icons:/var/www/olivetin/customIcons
+      - .:/repo
+      - /var/run/docker.sock:/var/run/docker.sock
+      
+      # - /var/lib/docker:/var/lib/docker
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+    networks:
+      - caddy_network
+    ports:
+      - "1337:1337"
+    restart: always
 
-
-
-  # config:
-  #   container_name: olivetin
-  #   image: ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
-  #   build:
-  #     context: .
-  #     dockerfile: docker/Dockerfile
-  #     tags:
-  #       - ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
-  #     target: olivetin
-  #     x-bake:
-  #       platforms:
-  #         #- linux/arm64
-  #         - linux/amd64
-  #   #user: root
-  #   privileged: true
-  #   volumes:
-  #     - ./config/olivetin.yaml:/config/config.yaml # replace host path or volume as needed
-  #     - .:/repo
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #     - /var/lib/docker:/var/lib/docker
-  #   ports:
-  #     - "88:1337"
-  #   restart: unless-stopped
+  portainer:
+    container_name: portainer
+    #image: jamesread/olivetin
+    image: portainer/portainer-ce:latest
+    volumes:
+      - ./config/olivetin/:/config/ # here is config.yaml and icons located
+      - ./config/olivetin/icons:/var/www/olivetin/customIcons
+      - .:/repo
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+      
+      # - /var/lib/docker:/var/lib/docker
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+    ports:
+      - "8000:8000"
+      - "9443:9443"
+    restart: unless-stopped
 
   ################################################################################################################################
   # This section is mostly for supervision from PC                                                                               #
   ################################################################################################################################
 
-  foxglove-bridge:
-    image: husarion/foxglove-bridge:humble
-    # Interactive shell
+  # Foxglove Studio Bridge
+  foxglove_bridge:
+    extends: overlay
+    command: >
+      ros2 launch foxglove_bridge foxglove_bridge_launch.xml port:=8765
     stdin_open: true
     tty: true
     # Networking and IPC for ROS 2
-    network_mode: host
+    #network_mode: host
     ipc: host
-    # Needed to display graphical applications
-    #privileged: true
     environment:
-      # Allows graphical programs in the container.
-      - DISPLAY=${DISPLAY}
-      - QT_X11_NO_MITSHM=1
-      - NVIDIA_DRIVER_CAPABILITIES=all
       - ROS_DOMAIN_ID=5
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
   foxglove:
-    image: husarion/foxglove
+    #image: husarion/foxglove
+    image: ghcr.io/foxglove/studio:latest
+    restart: always
     depends_on:
-      - foxglove-bridge
+      - foxglove_bridge
+    networks:
+      - caddy_network
     ports:
       - 8080:8080
+    volumes:
+      - ./config/foxglove/extensions:/src/extensions
+      - ./config/foxglove/foxglove-layout.json:/foxglove/default-layout.json
 
   # rviz2
   rviz2:
@@ -200,4 +225,66 @@ services:
       rviz2
     # Needed to display graphical applications
     privileged: true
-networks: {}
+
+################################################################################################################################
+# Core Services for Web Management                                                                                             #
+################################################################################################################################
+  caddy:
+    image: caddy:latest
+    networks:
+      - caddy_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./config/caddy/content:/usr/share/caddy/
+    restart: always
+    depends_on:
+      - foxglove
+      - olivetin
+  roscore:
+    image: husarion/ros1-bridge:foxy-0.9.6-20230327-stable
+    command: |
+      bash -c "source /opt/ros/noetic/setup.bash && roscore"
+    network_mode: host
+    environment:
+      - ROS_DOMAIN_ID=5
+    restart: always
+  ros1bridge:
+    image: husarion/ros1-bridge:foxy-0.9.6-20230327-stable
+    command: |
+      ros2 run ros1_bridge dynamic_bridge
+    network_mode: host
+    ipc: host
+    environment:
+      - ROS_DOMAIN_ID=5
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    restart: always
+  webui-joystick:
+    image: husarion/webui-ros-joystick:noetic-0.0.1-20230510-stable
+    network_mode: host
+    # networks:
+    #   - caddy_network
+    # ports:
+    #   - 8000:8000
+    ipc: host
+    environment:
+      - ROS_DOMAIN_ID=5
+    restart: always
+    depends_on:
+      - ros1bridge
+    command: roslaunch webui-ros-joystick webui.launch
+
+################################################################################################################################
+# Docker related extra stuff                                                                                                   #
+################################################################################################################################
+networks:
+  caddy_network:
+    driver: bridge
+volumes: 
+  portainer_data:
+  npm-data:
+  npm-letsencrypt:
