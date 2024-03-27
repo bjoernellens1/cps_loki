@@ -245,6 +245,28 @@ services:
     depends_on:
       - foxglove
       - olivetin
+  roscore:
+    image: husarion/ros1-bridge:foxy-0.9.6-20230327-stable
+    command: |
+      bash -c "source /opt/ros/noetic/setup.bash && roscore"
+    network_mode: host
+    environment:
+      - ROS_DOMAIN_ID=5
+    restart: always
+  ros1bridge:
+    image: husarion/ros1-bridge:foxy-0.9.6-20230327-stable
+    command: |
+      ros2 run ros1_bridge dynamic_bridge
+    network_mode: host
+    environment:
+      - ROS_DOMAIN_ID=5
+    restart: always
+  webui-joystick:
+    image: husarion/webui-ros-joystick:noetic-0.0.1-20230510-stable
+    network_mode: host
+    environment:
+      - ROS_DOMAIN_ID=5
+    restart: always
 
   # Web Virtual joystick ui from Husarion
   # webui-ros-joystick:
