@@ -53,6 +53,7 @@ services:
           - linux/amd64
     volumes:
       - .:/repo
+      - .docker/entrypoint.sh:/entrypoint.sh
   # Additional dependencies for GUI applications
   guis:
     extends: overlay
