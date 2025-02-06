@@ -98,7 +98,7 @@ LABEL org.opencontainers.image.source=https://github.com/bjoernellens1/cps_loki
 #############################################
 # OliveTin Build                            #
 #############################################
-FROM registry.fedoraproject.org/fedora:39 AS olivetin
+FROM registry.fedoraproject.org/fedora:43 AS olivetin
 
 LABEL org.opencontainers.image.source https://ghcr.io/bjoernellens1/cps_bot_mini_ws/olivetin
 LABEL org.opencontainers.image.title=OliveTin
